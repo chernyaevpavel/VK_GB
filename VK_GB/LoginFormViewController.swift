@@ -33,12 +33,12 @@ class LoginFormViewController: UIViewController {
 
 
     
-    @IBAction func login(_ sender: Any) {
-        guard loginTextField.text ==  "user" && passwordTextField.text == "123" else {
-            return
-        }
-        print("OK")
-    }
+//    @IBAction func login(_ sender: Any){
+//        guard loginTextField.text ==  "user" && passwordTextField.text == "123" else {
+//            return
+//        }
+//
+//    }
     
     // Когда клавиатура появляется
     @objc func keyboardWasShown(notification: Notification) {
@@ -72,6 +72,30 @@ class LoginFormViewController: UIViewController {
         // Присваиваем его UIScrollVIew
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
     }
-
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if  !checkUserData() {
+            alertLoginError()
+            return false
+        }
+        return true
+    }
+    
+    func checkUserData() -> Bool {
+        guard let login = loginTextField.text else { return false }
+        guard let password = passwordTextField.text else { return false }
+        
+        if login == "user" && password == "123" {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func alertLoginError() {
+        let alert = UIAlertController(title: "Ошибка", message: "Введены не верные данные пользователя", preferredStyle: .alert)
+        let action = UIAlertAction(title: "ОК", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
 }
