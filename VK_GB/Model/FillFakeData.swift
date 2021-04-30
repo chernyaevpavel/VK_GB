@@ -49,5 +49,16 @@ struct FillFakeData {
         friend = Friend(name: "Собакевич Дог Шарикович", avatar: "dog_avatar", status: .onLine, photos: photos)
         arr.append(friend)
         
+        
+        photos = ["cat1", "cat2", "cat3", "cat4", "cat5", "cat6", "cat7", "cat8", "cat9", "cat10", "cat11", "cat12"]
+        friend = Friend(name: "Котейка Мурлыкович", avatar: "cat_avatar", status: .offLine, photos: photos)
+        arr.append(friend)
+        
+        photos = ["dima1", "dima2", "dima3"]
+        friend = Friend(name: "Сосед Диман", avatar: "dima_avatar", status: .offLine, photos: photos)
+        arr.append(friend)
+        
+        
+        
     }
 }
