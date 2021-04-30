@@ -85,7 +85,8 @@ class LoginFormViewController: UIViewController {
         guard let login = loginTextField.text else { return false }
         guard let password = passwordTextField.text else { return false }
         
-        if login == "user" && password == "123" {
+        //if login == "user" && password == "123" {
+        if login == "" && password == "" {
             return true
         } else {
             return false
