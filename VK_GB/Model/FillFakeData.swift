@@ -45,16 +45,19 @@ struct FillFakeData {
     func flllFriend(arr: inout [Friend]) {
         //print(#function)
         var friend: Friend
-        var photos = ["dog1", "dog2", "dog3", "dog4", "dog5", "dog6", "dog7", "dog8"]
+        
+        var photos = [LikePhoto("dog1", 5), LikePhoto("dog2", 0), LikePhoto("dog3", 3), LikePhoto("dog4", 15), LikePhoto("dog5", 5),
+                      LikePhoto("dog6", 1), LikePhoto("dog7", 8), LikePhoto("dog8", 7)]
+        
         friend = Friend(name: "Собакевич Дог Шарикович", avatar: "dog_avatar", status: .onLine, photos: photos)
         arr.append(friend)
         
         
-        photos = ["cat1", "cat2", "cat3", "cat4", "cat5", "cat6", "cat7", "cat8", "cat9", "cat10", "cat11", "cat12"]
+        photos = [LikePhoto("cat1", 0), LikePhoto("cat2", 0), LikePhoto("cat3", 0), LikePhoto("cat4", 0), LikePhoto("cat5", 0), LikePhoto("cat6", 0), LikePhoto("cat7", 0), LikePhoto("cat8", 0), LikePhoto("cat9", 0), LikePhoto("cat10", 0), LikePhoto("cat11", 0), LikePhoto("cat12", 0)]
         friend = Friend(name: "Котейка Мурлыкович", avatar: "cat_avatar", status: .offLine, photos: photos)
         arr.append(friend)
         
-        photos = ["dima1", "dima2", "dima3"]
+        photos = [LikePhoto("dima1", 0), LikePhoto("dima2", 0), LikePhoto("dima3", 0)]
         friend = Friend(name: "Сосед Диман", avatar: "dima_avatar", status: .offLine, photos: photos)
         arr.append(friend)
         

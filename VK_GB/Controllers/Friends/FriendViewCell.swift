@@ -9,12 +9,10 @@ import UIKit
 
 class FriendViewCell: UITableViewCell {
     static let reuseID = "FrindCell"
-    @IBOutlet weak var avatar: UIImageView!
+    
+    @IBOutlet weak var avatar: UIAvatarView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var status: UILabel!
-    
-    
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,9 +35,10 @@ class FriendViewCell: UITableViewCell {
             self.status.textColor = .red
         }
         if let tmpImage = avatar {
-            self.avatar.image = tmpImage
+            self.avatar.avatarImage.image = tmpImage
         } else {
-            self.avatar.image = UIImage(named: "no-image")
+            
+            self.avatar.avatarImage.image = UIImage(named: "no-image")
         }
     }
 

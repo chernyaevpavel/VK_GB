@@ -33,7 +33,13 @@ class UserGroupTableViewCell: UITableViewCell {
             groupImage.image = UIImage(named: "no-image")
         }
         groupImage.layer.cornerRadius = groupImage.frame.size.width / 2
-        groupImage.clipsToBounds = true
+        groupImage.layer.masksToBounds = true
+//        groupImage.clipsToBounds = true
+//        groupImage.layer.shadowColor = UIColor.black.cgColor
+//        groupImage.layer.shadowOpacity = 0.5
+//        groupImage.layer.shadowRadius = 8
+//        groupImage.layer.shadowOffset = CGSize(width: 10, height: 10)
+        //groupImage.layer.masksToBounds = false
         
     }
 }
