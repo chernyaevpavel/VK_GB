@@ -21,7 +21,7 @@ class SelectLetterControl: UIControl {
     }
     private var buttons: [UIButton] = []
     private var stackView: UIStackView!
-    var delegate: SelectLetterProtocol?
+    weak var delegate: SelectLetterProtocol?
     
     func setupView() {
         buttons = []

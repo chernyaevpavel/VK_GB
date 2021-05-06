@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SelectLetterProtocol {
+protocol SelectLetterProtocol: AnyObject {
     func selectLetter(_ letter: String)
 }
 
