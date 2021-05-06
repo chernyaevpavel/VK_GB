@@ -7,15 +7,11 @@
 
 class LikePhoto {
     var photo: Photo
-    var countLike: Int
-    var isLiked: Bool = false
-    init(_ photo: Photo, _ countLike: Int) {
+    var like: Like
+    
+    init(_ photo: Photo, _ like: Like) {
         self.photo = photo
-        self.countLike = countLike
+        self.like = like
     }
     
-    init(_ photoName: String, _ countLike: Int) {
-        self.photo = Photo(photoName)
-        self.countLike = countLike
-    }
 }

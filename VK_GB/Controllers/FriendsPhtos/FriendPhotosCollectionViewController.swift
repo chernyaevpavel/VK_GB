@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol FriendPhotosCollectionViewControllerDelegate: AnyObject {
-    func changeIsLike(isLike: Bool, index: Int)
+protocol FriendsPhotoCollectionProtocol: AnyObject {
+    func changeStatus(status: Bool, likePhoto: LikePhoto?)
 }
 
-class FriendPhotosCollectionViewController: UICollectionViewController, FriendPhotosCollectionViewControllerDelegate  {
+class FriendPhotosCollectionViewController: UICollectionViewController, FriendsPhotoCollectionProtocol  {
         
     var friendPhotos: [LikePhoto] = []
     
@@ -22,11 +22,6 @@ class FriendPhotosCollectionViewController: UICollectionViewController, FriendPh
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
-    func changeIsLike(isLike: Bool, index: Int) {
-        //print("sdsdislike \(isLike) \(index)")
-        friendPhotos[index].isLiked = isLike
-    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return friendPhotos.count
@@ -34,10 +29,15 @@ class FriendPhotosCollectionViewController: UICollectionViewController, FriendPh
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FriendPhotoCollectionViewCell.reuseID, for: indexPath) as! FriendPhotoCollectionViewCell
-        
-        let likePhoto = friendPhotos[indexPath.row]
-        cell.configure(likePhoto: likePhoto, index: indexPath.row)
+        let index = indexPath.row
+        let likePhoto = friendPhotos[index]
+        cell.configure(likePhoto: likePhoto)
         cell.delegate = self
         return cell
+    }
+    
+    func changeStatus(status: Bool, likePhoto: LikePhoto?) {
+        let item = friendPhotos.first(where: {$0.photo.name == likePhoto?.photo.name})
+        item?.like.isLike = status
     }
 }

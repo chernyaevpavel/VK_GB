@@ -13,6 +13,8 @@
 		B62DE8B4263B19F000EFA31F /* FriendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62DE8B3263B19F000EFA31F /* FriendViewCell.swift */; };
 		B62DE8B7263B1CE800EFA31F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62DE8B6263B1CE800EFA31F /* Friend.swift */; };
 		B62DE8BC263B1DA500EFA31F /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62DE8BB263B1DA500EFA31F /* Status.swift */; };
+		B6534BFE26413269001D77D0 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6534BFD26413269001D77D0 /* Like.swift */; };
+		B6534C022641A4C8001D77D0 /* SelectLetterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6534C012641A4C8001D77D0 /* SelectLetterControl.swift */; };
 		B654B90726407C9200A273BC /* LikePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654B90626407C9200A273BC /* LikePhoto.swift */; };
 		B6B4C07326406C0900287DE7 /* FriendPhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4C07226406C0900287DE7 /* FriendPhotosCollectionViewController.swift */; };
 		B6B4C07726406E4100287DE7 /* LoginFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D8047426406A640086BACE /* LoginFormViewController.swift */; };
@@ -38,6 +40,8 @@
 		B62DE8B3263B19F000EFA31F /* FriendViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewCell.swift; sourceTree = "<group>"; };
 		B62DE8B6263B1CE800EFA31F /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		B62DE8BB263B1DA500EFA31F /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		B6534BFD26413269001D77D0 /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		B6534C012641A4C8001D77D0 /* SelectLetterControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLetterControl.swift; sourceTree = "<group>"; };
 		B654B90626407C9200A273BC /* LikePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePhoto.swift; sourceTree = "<group>"; };
 		B6B4C07226406C0900287DE7 /* FriendPhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		B6C8AFEC2632D99C0040654B /* VK_GB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK_GB.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,14 +94,15 @@
 			children = (
 				B6C8AFEF2632D99C0040654B /* AppDelegate.swift */,
 				B6C8AFF12632D99C0040654B /* SceneDelegate.swift */,
+				B6DBF3E82643DAA100BEF4B9 /* Extension */,
 				B6D8047226406A360086BACE /* Controllers */,
 				B6DE7DB02639CFCF000A2554 /* Model */,
+				B6DBF3E62641DEE800BEF4B9 /* Controls */,
+				B6DBF3E72641DF2600BEF4B9 /* CustomView */,
 				B6C8AFF82632D99D0040654B /* Assets.xcassets */,
 				B6C8AFFA2632D99D0040654B /* LaunchScreen.storyboard */,
 				B6C8AFFD2632D99D0040654B /* Info.plist */,
 				B6C8B0062632DF600040654B /* Main.storyboard */,
-				B6D1E70E263D5AF20061F336 /* UIAvatarView.swift */,
-				B6D1E715263D75820061F336 /* ILikeControl.swift */,
 			);
 			path = VK_GB;
 			sourceTree = "<group>";
@@ -105,9 +110,11 @@
 		B6D8047226406A360086BACE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B6D8047626406A840086BACE /* Groups */,
-				B6D8047526406A6E0086BACE /* Friends */,
 				B6D8047326406A480086BACE /* Login */,
+				B6DBF3E42641DCAE00BEF4B9 /* MyFriends */,
+				B6D8047526406A6E0086BACE /* FriendsPhtos */,
+				B6D8047626406A840086BACE /* MyGroup */,
+				B6DBF3E52641DD0F00BEF4B9 /* GlobalGroup */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -120,25 +127,63 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		B6D8047526406A6E0086BACE /* Friends */ = {
+		B6D8047526406A6E0086BACE /* FriendsPhtos */ = {
 			isa = PBXGroup;
 			children = (
-				B62DE8B0263B199200EFA31F /* FriendsTableViewController.swift */,
-				B62DE8B3263B19F000EFA31F /* FriendViewCell.swift */,
-				B6D8047726406AA80086BACE /* FriendPhotoCollectionViewCell.swift */,
 				B6B4C07226406C0900287DE7 /* FriendPhotosCollectionViewController.swift */,
+				B6D8047726406AA80086BACE /* FriendPhotoCollectionViewCell.swift */,
 			);
-			path = Friends;
+			path = FriendsPhtos;
 			sourceTree = "<group>";
 		};
-		B6D8047626406A840086BACE /* Groups */ = {
+		B6D8047626406A840086BACE /* MyGroup */ = {
 			isa = PBXGroup;
 			children = (
 				B61E53C426393FBD00D215D3 /* UserGroupsTableViewController.swift */,
 				B61E53C72639442700D215D3 /* UserGroupTableViewCell.swift */,
+			);
+			path = MyGroup;
+			sourceTree = "<group>";
+		};
+		B6DBF3E42641DCAE00BEF4B9 /* MyFriends */ = {
+			isa = PBXGroup;
+			children = (
+				B62DE8B0263B199200EFA31F /* FriendsTableViewController.swift */,
+				B62DE8B3263B19F000EFA31F /* FriendViewCell.swift */,
+			);
+			path = MyFriends;
+			sourceTree = "<group>";
+		};
+		B6DBF3E52641DD0F00BEF4B9 /* GlobalGroup */ = {
+			isa = PBXGroup;
+			children = (
 				B6DE7DBA2639E7F5000A2554 /* GlobalGroupsTableViewController.swift */,
 			);
-			path = Groups;
+			path = GlobalGroup;
+			sourceTree = "<group>";
+		};
+		B6DBF3E62641DEE800BEF4B9 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				B6D1E715263D75820061F336 /* ILikeControl.swift */,
+				B6534C012641A4C8001D77D0 /* SelectLetterControl.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		B6DBF3E72641DF2600BEF4B9 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				B6D1E70E263D5AF20061F336 /* UIAvatarView.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		B6DBF3E82643DAA100BEF4B9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		B6DE7DB02639CFCF000A2554 /* Model */ = {
@@ -148,6 +193,7 @@
 				B6DE7DB42639D070000A2554 /* SubjectMatter.swift */,
 				B6DE7DB72639D2E8000A2554 /* FillFakeData.swift */,
 				B62DE8B6263B1CE800EFA31F /* Friend.swift */,
+				B6534BFD26413269001D77D0 /* Like.swift */,
 				B6D1E71826400EAC0061F336 /* Photo.swift */,
 				B62DE8BB263B1DA500EFA31F /* Status.swift */,
 				B654B90626407C9200A273BC /* LikePhoto.swift */,
@@ -231,6 +277,7 @@
 				B6DE7DBB2639E7F5000A2554 /* GlobalGroupsTableViewController.swift in Sources */,
 				B6D1E70F263D5AF20061F336 /* UIAvatarView.swift in Sources */,
 				B62DE8B4263B19F000EFA31F /* FriendViewCell.swift in Sources */,
+				B6534C022641A4C8001D77D0 /* SelectLetterControl.swift in Sources */,
 				B6B4C07326406C0900287DE7 /* FriendPhotosCollectionViewController.swift in Sources */,
 				B62DE8B1263B199200EFA31F /* FriendsTableViewController.swift in Sources */,
 				B62DE8B7263B1CE800EFA31F /* Friend.swift in Sources */,
@@ -241,6 +288,7 @@
 				B654B90726407C9200A273BC /* LikePhoto.swift in Sources */,
 				B62DE8BC263B1DA500EFA31F /* Status.swift in Sources */,
 				B6DE7DB82639D2E8000A2554 /* FillFakeData.swift in Sources */,
+				B6534BFE26413269001D77D0 /* Like.swift in Sources */,
 				B6D1E716263D75820061F336 /* ILikeControl.swift in Sources */,
 				B6C8AFF02632D99C0040654B /* AppDelegate.swift in Sources */,
 				B6C8AFF22632D99C0040654B /* SceneDelegate.swift in Sources */,

@@ -8,18 +8,14 @@
 import UIKit
 
 class ILikeControl: UIControl {
+    //var likeControlModel = Like(5)
     private let buttonHeart = UIButton()
     private let counterLikeView = UILabel()
-    var heartState = false
     private let imageHeartFill = UIImage(systemName: "heart.fill")
     private let imageHeart = UIImage(systemName: "heart")
-    weak var delegate: FriendPhotoCollectionViewCellDelegate?
-    
-    var likeCount: Int = 0 {
-        didSet {
-            counterLikeView.text = String(likeCount)
-        }
-    }
+    var countLike = 0
+    var isLike = false
+    weak var delegate: ChangeStatusPhotoProtocol?
     
     
     override init(frame: CGRect){
@@ -34,7 +30,7 @@ class ILikeControl: UIControl {
     
     private func setupView(){
         backgroundColor = .none
-        counterLikeView.text = String(likeCount)
+        counterLikeView.text = String(countLike)
         counterLikeView.frame = CGRect(x: 0, y: 0, width: 50, height: 20)
         counterLikeView.textAlignment = .right
         addSubview(counterLikeView)
@@ -46,13 +42,13 @@ class ILikeControl: UIControl {
     }
     
     func drawControl() {
-        if heartState {
-            counterLikeView.text = String(likeCount + 1)
+        if isLike {
+            counterLikeView.text = String(countLike + 1)
             counterLikeView.textColor = .red
             buttonHeart.setImage(imageHeartFill, for: .normal)
             buttonHeart.tintColor = .red
         } else {
-            counterLikeView.text = String(likeCount)
+            counterLikeView.text = String(countLike)
             counterLikeView.textColor = .none
             buttonHeart.setImage(imageHeart, for: .normal)
             buttonHeart.tintColor = .none
@@ -60,8 +56,8 @@ class ILikeControl: UIControl {
     }
     
     @objc func changeLike() {
-        heartState = !heartState
-        delegate?.changeIsLike(isLike: heartState)
+        isLike.toggle()
+        delegate?.changeStatusPhoto(status: isLike)
         drawControl()
     }
 }
