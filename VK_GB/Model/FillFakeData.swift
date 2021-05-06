@@ -79,29 +79,36 @@ struct FillFakeData {
         
         for _ in 0...5 {
             
-            photos = [LikePhoto(Photo("sveta"), Like(0))]
+            photos = [LikePhoto(Photo("sveta_avatar"), Like(104))]
             friend = Friend(name: "Айкина Света", avatar: "sveta_avatar", status: .onLine, photos: photos)
             arr.append(friend)
             
-            friend = Friend(name: "Бараш", avatar: "barash_avatar", status: .onLine, photos: [])
+            photos = [LikePhoto(Photo("barash_avatar"), Like(54))]
+            friend = Friend(name: "Бараш", avatar: "barash_avatar", status: .onLine, photos: photos)
             arr.append(friend)
             
-            friend = Friend(name: "Нюша", avatar: "nysha_avatar", status: .onLine, photos: [])
+            photos = [LikePhoto(Photo("nysha_avatar"), Like(1248))]
+            friend = Friend(name: "Нюша", avatar: "nysha_avatar", status: .onLine, photos: photos)
             arr.append(friend)
             
-            friend = Friend(name: "Карыч", avatar: "nysha_avatar", status: .onLine, photos: [])
+            photos = [LikePhoto(Photo("karish_avatar"), Like(32))]
+            friend = Friend(name: "Карыч", avatar: "karish_avatar", status: .onLine, photos: photos)
             arr.append(friend)
             
-            friend = Friend(name: "Пин", avatar: "nysha_avatar", status: .onLine, photos: [])
+            photos = [LikePhoto(Photo("pin_avatar"), Like(15))]
+            friend = Friend(name: "Пин", avatar: "pin_avatar", status: .onLine, photos: photos)
             arr.append(friend)
             
-            friend = Friend(name: "Лосяш", avatar: "nysha_avatar", status: .onLine, photos: [])
+            photos = [LikePhoto(Photo("losyash_avatar"), Like(24))]
+            friend = Friend(name: "Лосяш", avatar: "losyash_avatar", status: .onLine, photos: photos)
             arr.append(friend)
             
-            friend = Friend(name: "Совунья", avatar: "nysha_avatar", status: .onLine, photos: [])
+            photos = [LikePhoto(Photo("sova_avatar"), Like(154))]
+            friend = Friend(name: "Совунья", avatar: "sova_avatar", status: .onLine, photos: photos)
             arr.append(friend)
             
-            friend = Friend(name: "Копатыч", avatar: "nysha_avatar", status: .onLine, photos: [])
+            photos = [LikePhoto(Photo("kopatish_avatar"), Like(500))]
+            friend = Friend(name: "Копатыч", avatar: "kopatish_avatar", status: .onLine, photos: photos)
             arr.append(friend)
         }
         
