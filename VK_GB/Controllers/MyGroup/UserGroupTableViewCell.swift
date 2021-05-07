@@ -15,13 +15,10 @@ class UserGroupTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
     func configure(name: String, description: String, image: UIImage?) {
@@ -34,12 +31,5 @@ class UserGroupTableViewCell: UITableViewCell {
         }
         groupImage.layer.cornerRadius = groupImage.frame.size.width / 2
         groupImage.layer.masksToBounds = true
-//        groupImage.clipsToBounds = true
-//        groupImage.layer.shadowColor = UIColor.black.cgColor
-//        groupImage.layer.shadowOpacity = 0.5
-//        groupImage.layer.shadowRadius = 8
-//        groupImage.layer.shadowOffset = CGSize(width: 10, height: 10)
-        //groupImage.layer.masksToBounds = false
-        
     }
 }

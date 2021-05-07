@@ -12,7 +12,6 @@ protocol FriendsPhotoCollectionProtocol: AnyObject {
 }
 
 class FriendPhotosCollectionViewController: UICollectionViewController, FriendsPhotoCollectionProtocol  {
-        
     var friendPhotos: [LikePhoto] = []
     
     override func viewDidLoad() {

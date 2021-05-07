@@ -5,8 +5,6 @@
 //  Created by Павел Черняев on 28.04.2021.
 //
 
-
-
 struct Group {
     var name: String
     let subjectMater: SubjectMatter

@@ -33,10 +33,8 @@ class SelectLetterControl: UIControl {
             button.addTarget(self, action: #selector(selectLetter(_:)), for: .touchUpInside)
             self.buttons.append(button)
         }
-        
         stackView = UIStackView(arrangedSubviews: self.buttons)
         self.addSubview(stackView)
-//        stackView.spacing = 8
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.distribution = .fillEqually

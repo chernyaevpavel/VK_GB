@@ -8,7 +8,6 @@
 import UIKit
 
 class ILikeControl: UIControl {
-    //var likeControlModel = Like(5)
     private let buttonHeart = UIButton()
     private let counterLikeView = UILabel()
     private let imageHeartFill = UIImage(systemName: "heart.fill")
@@ -16,7 +15,6 @@ class ILikeControl: UIControl {
     var countLike = 0
     var isLike = false
     weak var delegate: ChangeStatusPhotoProtocol?
-    
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -34,7 +32,6 @@ class ILikeControl: UIControl {
         counterLikeView.frame = CGRect(x: 0, y: 0, width: 50, height: 20)
         counterLikeView.textAlignment = .right
         addSubview(counterLikeView)
-        
         buttonHeart.frame = CGRect(x: 55, y: 0, width: 20, height: 20)
         buttonHeart.setImage(imageHeart, for: .normal)
         buttonHeart.addTarget(self, action: #selector(changeLike), for: .touchUpInside)

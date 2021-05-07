@@ -22,17 +22,9 @@ struct FillFakeData {
         group = Group(name: "Рыбалка в Саратове", subjectMater: .fishing, countUser: 2548, image: "fish")
         arr.append(group)        
         
-        //        for i in 0...500 {
-        //            group = Group(name: "Группа \(i)", subjectMater: .fishing, countUser: i, image: "fish")
-        //            arr.append(group)
-        //        }
     }
     
-    
     func fillGlobalGroup(arr: inout [Group])  {
-        //TODO delprint
-        //        print(#function)
-        //        sleep(5)
         var group: Group
         for i in 0...50 {
             group = Group(name: "Глобальная группа \(i)", subjectMater: .fishing, countUser: i, image: "fish")
@@ -42,7 +34,6 @@ struct FillFakeData {
     
     func flllFriend(arr: inout [Friend]) {
         var friend: Friend
-        
         var photos = [LikePhoto(Photo("dog1"), Like(5)),
                       LikePhoto(Photo("dog2"), Like(0)),
                       LikePhoto(Photo("dog3"), Like(3)),
@@ -54,7 +45,6 @@ struct FillFakeData {
         
         friend = Friend(name: "Собакевич Дог Шарикович", avatar: "dog_avatar", status: .onLine, photos: photos)
         arr.append(friend)
-        
         
         photos = [LikePhoto(Photo("cat1"), Like(0)),
                   LikePhoto(Photo("cat2"), Like(0)),
@@ -78,7 +68,6 @@ struct FillFakeData {
         arr.append(friend)
         
         for _ in 0...5 {
-            
             photos = [LikePhoto(Photo("sveta_avatar"), Like(104))]
             friend = Friend(name: "Айкина Света", avatar: "sveta_avatar", status: .onLine, photos: photos)
             arr.append(friend)
@@ -112,11 +101,9 @@ struct FillFakeData {
             arr.append(friend)
         }
         
-        
         for i in 0...1 {
             arr.append(Friend(name: "Дружбан \(i)", avatar: nil, status: .onLine, photos: []))
         }
-        
         
         arr = arr.sorted(by: {$0.name < $1.name})
     }

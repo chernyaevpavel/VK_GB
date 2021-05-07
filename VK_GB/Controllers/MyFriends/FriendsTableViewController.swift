@@ -12,7 +12,6 @@ protocol SelectLetterProtocol: AnyObject {
 }
 
 class FriendsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SelectLetterProtocol {
-    
     var arrFriens: [Friend] = []
     var arrFirstLetter =  [String]()
     let fillFakeData = FillFakeData()
@@ -34,17 +33,14 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let letter = arrFirstLetter[section]
         return filterFriendByLetter(arrFriens, letter).count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FriendViewCell.reuseID , for: indexPath) as! FriendViewCell
         let section = indexPath.section
         let index = indexPath.row
-        
         let letter = arrFirstLetter[section]
         let friend = filterFriendByLetter(arrFriens, letter)[index]
-        
         var avatar: UIImage?
         if let named = friend.avatar {
             avatar = UIImage(named: named)
@@ -78,7 +74,6 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
         guard let section = arrFirstLetter.firstIndex(of: letter) else { return }
         let indexPath = IndexPath(row: 0, section: section)
         tableView.scrollToRow(at: indexPath, at: .top, animated: true)
-        
     }
     
     private func filterFriendByLetter(_ arr: [Friend], _ letter: String) -> [Friend] {

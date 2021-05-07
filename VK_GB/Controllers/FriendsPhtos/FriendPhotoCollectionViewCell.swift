@@ -12,7 +12,6 @@ protocol ChangeStatusPhotoProtocol: AnyObject {
 }
 
 class FriendPhotoCollectionViewCell: UICollectionViewCell, ChangeStatusPhotoProtocol {
-        
     static let reuseID = "FriendPhotoCollectionViewCell"
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var likeControl: ILikeControl!

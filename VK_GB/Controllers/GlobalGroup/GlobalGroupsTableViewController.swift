@@ -24,7 +24,6 @@ class GlobalGroupsTableViewController: UITableViewController {
         return globalUserGroups.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UserGroupTableViewCell.reuseID, for: indexPath) as! UserGroupTableViewCell
         let index = indexPath.row
