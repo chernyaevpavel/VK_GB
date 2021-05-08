@@ -353,14 +353,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WMf-rd-wWf">
-                                <rect key="frame" x="0.0" y="140" width="414" height="671"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="mkg-3N-PeT"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="hhq-J4-xX7"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="V4U-Sz-dKZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vUy-hn-ezP"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="vUy-hn-ezP"/>
                     <connections>
                         <outlet property="scrollView" destination="WMf-rd-wWf" id="Vhp-50-8r9"/>
                     </connections>

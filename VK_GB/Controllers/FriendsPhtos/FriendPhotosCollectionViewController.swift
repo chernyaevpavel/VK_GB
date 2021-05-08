@@ -43,7 +43,7 @@ class FriendPhotosCollectionViewController: UICollectionViewController, FriendsP
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "ShowFullPhoto" else { return }
         guard let destination = segue.destination as? FriendPhotosFullViewController else { return }
-        let selIndex = collectionView.indexPathsForSelectedItems
+//        let selIndex = collectionView.indexPathsForSelectedItems
         destination.friendPhotos = friendPhotos
     }
 }
