@@ -7,11 +7,9 @@
 
 import UIKit
 
-protocol FriendsPhotoCollectionProtocol: AnyObject {
-    func changeStatus(status: Bool, likePhoto: LikePhoto?)
-}
 
-class FriendPhotosCollectionViewController: UICollectionViewController, FriendsPhotoCollectionProtocol  {
+class FriendPhotosCollectionViewController: UICollectionViewController, ChangeStatusLikeObjectProtocol  {
+    
     var friendPhotos: [LikePhoto] = []
     
     override func viewDidLoad() {
@@ -35,8 +33,14 @@ class FriendPhotosCollectionViewController: UICollectionViewController, FriendsP
         return cell
     }
     
-    func changeStatus(status: Bool, likePhoto: LikePhoto?) {
-        let item = friendPhotos.first(where: {$0.photo.name == likePhoto?.photo.name})
+//    func changeStatus(status: Bool, likePhoto: LikePhoto?) {
+//        let item = friendPhotos.first(where: {$0.photo.name == likePhoto?.photo.name})
+//        item?.like.isLike = status
+//    }
+    
+    func changeStatus<T>(status: Bool, obj: T) {
+        guard let likePhoto = obj as? LikePhoto else { return }
+        let item = friendPhotos.first(where: {$0.photo.name == likePhoto.photo.name})
         item?.like.isLike = status
     }
     

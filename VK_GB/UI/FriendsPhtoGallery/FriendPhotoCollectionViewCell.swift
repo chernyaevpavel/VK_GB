@@ -7,15 +7,11 @@
 
 import UIKit
 
-protocol ChangeStatusPhotoProtocol: AnyObject {
-    func changeStatusPhoto(status: Bool)
-}
-
-class FriendPhotoCollectionViewCell: UICollectionViewCell, ChangeStatusPhotoProtocol {
+class FriendPhotoCollectionViewCell: UICollectionViewCell, ChangeStatusLikeProtocol {
     static let reuseID = "FriendPhotoCollectionViewCell"
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var likeControl: ILikeControl!
-    weak var delegate: FriendsPhotoCollectionProtocol?
+    weak var delegate: ChangeStatusLikeObjectProtocol?
     var likePhoto: LikePhoto?
     
     override func prepareForReuse() {
@@ -38,7 +34,7 @@ class FriendPhotoCollectionViewCell: UICollectionViewCell, ChangeStatusPhotoProt
         }
     }
     
-    func changeStatusPhoto(status: Bool) {
-        delegate?.changeStatus(status: status, likePhoto: likePhoto)
+    func changeStatusLike(status: Bool) {
+        delegate?.changeStatus(status: status, obj: likePhoto)
     }
 }

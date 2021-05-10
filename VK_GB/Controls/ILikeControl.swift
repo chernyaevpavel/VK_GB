@@ -7,14 +7,30 @@
 
 import UIKit
 
+protocol ChangeStatusLikeProtocol: AnyObject {
+    func changeStatusLike(status: Bool)
+}
+
+protocol ChangeStatusLikeObjectProtocol: AnyObject {
+    func changeStatus<T>(status: Bool, obj: T)
+}
+
 class ILikeControl: UIControl {
     private let buttonHeart = UIButton()
     private let counterLikeView = UILabel()
     private let imageHeartFill = UIImage(systemName: "heart.fill")
     private let imageHeart = UIImage(systemName: "heart")
-    var countLike = 0
-    var isLike = false
-    weak var delegate: ChangeStatusPhotoProtocol?
+    var countLike = 0 {
+        didSet {
+            drawControl()
+        }
+    }
+    var isLike = false {
+        didSet {
+            drawControl()
+        }
+    }
+    weak var delegate: ChangeStatusLikeProtocol?
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -54,7 +70,7 @@ class ILikeControl: UIControl {
     
     @objc func changeLike() {
         isLike.toggle()
-        delegate?.changeStatusPhoto(status: isLike)
+        delegate?.changeStatusLike(status: isLike)
         drawControl()
     }
 }

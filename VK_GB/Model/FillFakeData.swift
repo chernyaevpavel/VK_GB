@@ -32,8 +32,8 @@ struct FillFakeData {
         }
     }
     
-    func flllFriend(arr: inout [Friend]) {
-        var friend: Friend
+    func flllFriend(arr: inout [User]) {
+        var friend: User
         var photos = [LikePhoto(Photo("dog1"), Like(5)),
                       LikePhoto(Photo("dog2"), Like(0)),
                       LikePhoto(Photo("dog3"), Like(3)),
@@ -43,7 +43,7 @@ struct FillFakeData {
                       LikePhoto(Photo("dog7"), Like(8)),
                       LikePhoto(Photo("dog8"), Like(7))]
         
-        friend = Friend(name: "Собакевич Дог Шарикович", avatar: "dog_avatar", status: .onLine, photos: photos)
+        friend = User(name: "Собакевич Дог Шарикович", avatar: "dog_avatar", status: .onLine, photos: photos)
         arr.append(friend)
         
         photos = [LikePhoto(Photo("cat1"), Like(0)),
@@ -58,57 +58,69 @@ struct FillFakeData {
                   LikePhoto(Photo("cat10"), Like(0)),
                   LikePhoto(Photo("cat11"), Like(0)),
                   LikePhoto(Photo("cat12"), Like(0))]
-        friend = Friend(name: "Котейка Мурлыкович", avatar: "cat_avatar", status: .offLine, photos: photos)
+        friend = User(name: "Котейка Мурлыкович", avatar: "cat_avatar", status: .offLine, photos: photos)
         arr.append(friend)
         
         photos = [LikePhoto(Photo("dima1"), Like(0)),
                   LikePhoto(Photo("dima2"), Like(0)),
                   LikePhoto(Photo("dima3"), Like(0))]
-        friend = Friend(name: "Сосед Диман", avatar: "dima_avatar", status: .offLine, photos: photos)
+        friend = User(name: "Сосед Диман", avatar: "dima_avatar", status: .offLine, photos: photos)
         arr.append(friend)
         
         for _ in 0...5 {
             photos = [LikePhoto(Photo("sveta_avatar"), Like(104))]
-            friend = Friend(name: "Айкина Света", avatar: "sveta_avatar", status: .onLine, photos: photos)
+            friend = User(name: "Айкина Света", avatar: "sveta_avatar", status: .onLine, photos: photos)
             arr.append(friend)
             
             photos = [LikePhoto(Photo("barash_avatar"), Like(54))]
-            friend = Friend(name: "Бараш", avatar: "barash_avatar", status: .onLine, photos: photos)
+            friend = User(name: "Бараш", avatar: "barash_avatar", status: .onLine, photos: photos)
             arr.append(friend)
             
             photos = [LikePhoto(Photo("nysha_avatar"), Like(1248))]
-            friend = Friend(name: "Нюша", avatar: "nysha_avatar", status: .onLine, photos: photos)
+            friend = User(name: "Нюша", avatar: "nysha_avatar", status: .onLine, photos: photos)
             arr.append(friend)
             
             photos = [LikePhoto(Photo("karish_avatar"), Like(32))]
-            friend = Friend(name: "Карыч", avatar: "karish_avatar", status: .onLine, photos: photos)
+            friend = User(name: "Карыч", avatar: "karish_avatar", status: .onLine, photos: photos)
             arr.append(friend)
             
             photos = [LikePhoto(Photo("pin_avatar"), Like(15))]
-            friend = Friend(name: "Пин", avatar: "pin_avatar", status: .onLine, photos: photos)
+            friend = User(name: "Пин", avatar: "pin_avatar", status: .onLine, photos: photos)
             arr.append(friend)
             
             photos = [LikePhoto(Photo("losyash_avatar"), Like(24))]
-            friend = Friend(name: "Лосяш", avatar: "losyash_avatar", status: .onLine, photos: photos)
+            friend = User(name: "Лосяш", avatar: "losyash_avatar", status: .onLine, photos: photos)
             arr.append(friend)
             
             photos = [LikePhoto(Photo("sova_avatar"), Like(154))]
-            friend = Friend(name: "Совунья", avatar: "sova_avatar", status: .onLine, photos: photos)
+            friend = User(name: "Совунья", avatar: "sova_avatar", status: .onLine, photos: photos)
             arr.append(friend)
             
             photos = [LikePhoto(Photo("kopatish_avatar"), Like(500))]
-            friend = Friend(name: "Копатыч", avatar: "kopatish_avatar", status: .onLine, photos: photos)
+            friend = User(name: "Копатыч", avatar: "kopatish_avatar", status: .onLine, photos: photos)
             arr.append(friend)
         }
         
         for i in 0...1 {
-            arr.append(Friend(name: "Дружбан \(i)", avatar: nil, status: .onLine, photos: []))
+            arr.append(User(name: "Дружбан \(i)", avatar: nil, status: .onLine, photos: []))
         }
         
         arr = arr.sorted(by: {$0.name < $1.name})
     }
     
-    func arrFirstChar(arrFriends: [Friend]) -> [String] {
+    func arrFirstChar(arrFriends: [User]) -> [String] {
         return Array(Set(arrFriends.compactMap { String($0.name.first ?? "*") })).sorted()
+    }
+    
+    static func fillNews() -> [News] {
+        var arr = [News]()
+        
+        var news = News(header: "Тест", news: "Бла, бла, бла", images: [Photo("dog1")], like: Like(502, true), comments: [], viewing: 500)
+        arr.append(news)
+        
+        news = News(header: "Новость дня 10.05.21", news: "Салют был клевым", images: [Photo("dog2")], like: Like(10, false), comments: [], viewing: 10)
+        arr.append(news)
+        
+        return arr
     }
 }
