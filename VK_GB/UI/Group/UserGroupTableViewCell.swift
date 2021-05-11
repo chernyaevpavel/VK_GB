@@ -9,9 +9,9 @@ import UIKit
 
 class UserGroupTableViewCell: UITableViewCell {
     static let reuseID = "GroupCell"
-    @IBOutlet weak var groupName: UILabel!
-    @IBOutlet weak var groupDescription: UILabel!
-    @IBOutlet weak var groupImage: UIImageView!
+    @IBOutlet weak private var groupName: UILabel!
+    @IBOutlet weak private var groupDescription: UILabel!
+    @IBOutlet weak private var groupImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,11 +21,11 @@ class UserGroupTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func configure(name: String, description: String, image: UIImage?) {
-        groupName.text = name
-        groupDescription.text = description
-        if let tmpImage = image {
-            groupImage.image = tmpImage
+    func configure(_ group: Group) {
+        groupName.text = group.name
+        groupDescription.text = group.description
+        if let named = group.image {
+            groupImage.image = UIImage(named: named)
         } else {
             groupImage.image = UIImage(named: "no-image")
         }

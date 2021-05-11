@@ -14,7 +14,7 @@ class NewsTableViewController: UIViewController, UITableViewDataSource, UITableV
         return arrNews
     }()
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private var tableView: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrNews.count
@@ -22,8 +22,6 @@ class NewsTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.reuseID) as! NewsTableViewCell
-//        let news = News(heder: "Тест", news: "Бла, бла, бла", images: [Photo("dog1")], like: Like(502, false), comments: [], viewing: 500)
-//        cell.configure(news: news)
         let news = arrNews[indexPath.row]
         cell.configure(news: news)
         cell.delegate = self

@@ -9,9 +9,9 @@ import UIKit
 
 class FriendViewCell: UITableViewCell {
     static let reuseID = "FrindCell"
-    @IBOutlet weak var avatar: UIAvatarView!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var status: UILabel!
+    @IBOutlet private weak var avatar: UIAvatarView!
+    @IBOutlet private weak var name: UILabel!
+    @IBOutlet private weak var status: UILabel!
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

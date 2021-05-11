@@ -9,9 +9,9 @@ import UIKit
 
 class LoginFormViewController: UIViewController {
     
-    @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet var loginTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet private var scrollView: UIScrollView!
+    @IBOutlet private var loginTextField: UITextField!
+    @IBOutlet private var passwordTextField: UITextField!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

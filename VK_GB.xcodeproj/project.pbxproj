@@ -29,6 +29,9 @@
 		B6D1E716263D75820061F336 /* ILikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1E715263D75820061F336 /* ILikeControl.swift */; };
 		B6D1E71926400EAC0061F336 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1E71826400EAC0061F336 /* Photo.swift */; };
 		B6D8047826406AA80086BACE /* FriendPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D8047726406AA80086BACE /* FriendPhotoCollectionViewCell.swift */; };
+		B6D9C51A264986CD00676EC8 /* CommentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D9C519264986CD00676EC8 /* CommentControl.swift */; };
+		B6D9C51C2649928000676EC8 /* ShareControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D9C51B2649928000676EC8 /* ShareControl.swift */; };
+		B6D9C51E26499A2E00676EC8 /* EyeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D9C51D26499A2E00676EC8 /* EyeControl.swift */; };
 		B6DE7DB22639D008000A2554 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DE7DB12639D008000A2554 /* Group.swift */; };
 		B6DE7DB52639D070000A2554 /* SubjectMatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DE7DB42639D070000A2554 /* SubjectMatter.swift */; };
 		B6DE7DB82639D2E8000A2554 /* FillFakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DE7DB72639D2E8000A2554 /* FillFakeData.swift */; };
@@ -67,6 +70,9 @@
 		B6D1E71826400EAC0061F336 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		B6D8047426406A640086BACE /* LoginFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormViewController.swift; sourceTree = "<group>"; };
 		B6D8047726406AA80086BACE /* FriendPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		B6D9C519264986CD00676EC8 /* CommentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentControl.swift; sourceTree = "<group>"; };
+		B6D9C51B2649928000676EC8 /* ShareControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareControl.swift; sourceTree = "<group>"; };
+		B6D9C51D26499A2E00676EC8 /* EyeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeControl.swift; sourceTree = "<group>"; };
 		B6DE7DB12639D008000A2554 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		B6DE7DB42639D070000A2554 /* SubjectMatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectMatter.swift; sourceTree = "<group>"; };
 		B6DE7DB72639D2E8000A2554 /* FillFakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillFakeData.swift; sourceTree = "<group>"; };
@@ -187,6 +193,9 @@
 			children = (
 				B6D1E715263D75820061F336 /* ILikeControl.swift */,
 				B6534C012641A4C8001D77D0 /* SelectLetterControl.swift */,
+				B6D9C519264986CD00676EC8 /* CommentControl.swift */,
+				B6D9C51B2649928000676EC8 /* ShareControl.swift */,
+				B6D9C51D26499A2E00676EC8 /* EyeControl.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -326,6 +335,7 @@
 				B61E53C526393FBD00D215D3 /* UserGroupsTableViewController.swift in Sources */,
 				B6D8047826406AA80086BACE /* FriendPhotoCollectionViewCell.swift in Sources */,
 				B61E53C82639442700D215D3 /* UserGroupTableViewCell.swift in Sources */,
+				B6D9C51A264986CD00676EC8 /* CommentControl.swift in Sources */,
 				B6E1122E2645528200558894 /* ParallaxView.swift in Sources */,
 				B6E4336526486EB4005BBA3E /* NewsTableViewCell.swift in Sources */,
 				B6DE7DBB2639E7F5000A2554 /* GlobalGroupsTableViewController.swift in Sources */,
@@ -337,6 +347,7 @@
 				B6B62EA92648764C0053158C /* Comment.swift in Sources */,
 				B62DE8B1263B199200EFA31F /* FriendsTableViewController.swift in Sources */,
 				B62DE8B7263B1CE800EFA31F /* User.swift in Sources */,
+				B6D9C51E26499A2E00676EC8 /* EyeControl.swift in Sources */,
 				B6DE7DB52639D070000A2554 /* SubjectMatter.swift in Sources */,
 				B6DE7DB22639D008000A2554 /* Group.swift in Sources */,
 				B6E4336A26486F49005BBA3E /* NewsTableViewController.swift in Sources */,
@@ -350,6 +361,7 @@
 				B6DE7DB82639D2E8000A2554 /* FillFakeData.swift in Sources */,
 				B6534BFE26413269001D77D0 /* Like.swift in Sources */,
 				B6D1E716263D75820061F336 /* ILikeControl.swift in Sources */,
+				B6D9C51C2649928000676EC8 /* ShareControl.swift in Sources */,
 				B6C8AFF02632D99C0040654B /* AppDelegate.swift in Sources */,
 				B6C8AFF22632D99C0040654B /* SceneDelegate.swift in Sources */,
 			);

@@ -9,10 +9,10 @@ import UIKit
 
 class FriendPhotoCollectionViewCell: UICollectionViewCell, ChangeStatusLikeProtocol {
     static let reuseID = "FriendPhotoCollectionViewCell"
-    @IBOutlet weak var photo: UIImageView!
-    @IBOutlet weak var likeControl: ILikeControl!
+    @IBOutlet weak private var photo: UIImageView!
+    @IBOutlet weak private var likeControl: ILikeControl!
+    private var likePhoto: LikePhoto?
     weak var delegate: ChangeStatusLikeObjectProtocol?
-    var likePhoto: LikePhoto?
     
     override func prepareForReuse() {
         photo.image = nil

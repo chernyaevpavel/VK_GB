@@ -15,8 +15,12 @@ struct News {
     var like: Like
     var comments: [Comment]
     var viewing: Int
+    var commentCount: Int  {
+        comments.count
+    }
+    var shareCount: Int
     
-    init(header: String, news: String, images: [Photo], like: Like, comments: [Comment], viewing: Int) {
+    init(header: String, news: String, images: [Photo], like: Like, comments: [Comment], viewing: Int, shareCount: Int) {
         self.id = UUID().uuidString
         self.header = header
         self.news = news
@@ -24,5 +28,6 @@ struct News {
         self.like = like
         self.comments = comments
         self.viewing = viewing
+        self.shareCount = shareCount
     }
 }

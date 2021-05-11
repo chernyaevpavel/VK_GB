@@ -20,16 +20,19 @@ class ILikeControl: UIControl {
     private let counterLikeView = UILabel()
     private let imageHeartFill = UIImage(systemName: "heart.fill")
     private let imageHeart = UIImage(systemName: "heart")
+    
     var countLike = 0 {
         didSet {
             drawControl()
         }
     }
+    
     var isLike = false {
         didSet {
             drawControl()
         }
     }
+    
     weak var delegate: ChangeStatusLikeProtocol?
     
     override init(frame: CGRect){
