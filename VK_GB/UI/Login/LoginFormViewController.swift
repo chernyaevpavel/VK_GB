@@ -12,6 +12,10 @@ class LoginFormViewController: UIViewController {
     @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var loginTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
+    private let loadingIndicatorView: LoadIndicatorView = {
+        let loadingIndicatorView = LoadIndicatorView()
+        return loadingIndicatorView
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,7 +66,13 @@ class LoginFormViewController: UIViewController {
             alertLoginError()
             return false
         }
-        return true
+        self.view.addSubview(loadingIndicatorView)
+        loadingIndicatorView.startAnimation()
+        delay(bySeconds: 5, dispatchLevel: .main) {
+            self.loadingIndicatorView.stopAnimation()
+            self.loadingIndicatorView.removeFromSuperview()
+        }
+        return false
     }
     
     func checkUserData() -> Bool {
@@ -80,5 +90,24 @@ class LoginFormViewController: UIViewController {
         let action = UIAlertAction(title: "ОК", style: .cancel, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+    }
+    
+    
+    public func delay(bySeconds seconds: Double, dispatchLevel: DispatchLevel = .main, closure: @escaping () -> Void) {
+        let dispatchTime = DispatchTime.now() + seconds
+        dispatchLevel.dispatchQueue.asyncAfter(deadline: dispatchTime, execute: closure)
+    }
+
+    public enum DispatchLevel {
+        case main, userInteractive, userInitiated, utility, background
+        var dispatchQueue: DispatchQueue {
+            switch self {
+            case .main:                 return DispatchQueue.main
+            case .userInteractive:      return DispatchQueue.global(qos: .userInteractive)
+            case .userInitiated:        return DispatchQueue.global(qos: .userInitiated)
+            case .utility:              return DispatchQueue.global(qos: .utility)
+            case .background:           return DispatchQueue.global(qos: .background)
+            }
+        }
     }
 }
