@@ -16,5 +16,16 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "SearchBarControl.setupView():SearchBarControl.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "layer.frame.size.height">
+            </PersistentString>
+            <PersistentString
+               value = "viewSearch.layer.frame.size.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

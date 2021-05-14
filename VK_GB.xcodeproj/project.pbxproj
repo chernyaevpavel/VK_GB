@@ -18,6 +18,8 @@
 		B6534BFE26413269001D77D0 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6534BFD26413269001D77D0 /* Like.swift */; };
 		B6534C022641A4C8001D77D0 /* SelectLetterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6534C012641A4C8001D77D0 /* SelectLetterControl.swift */; };
 		B654B90726407C9200A273BC /* LikePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B654B90626407C9200A273BC /* LikePhoto.swift */; };
+		B6A7CD60264C45F100FDAB8B /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A7CD5F264C45F100FDAB8B /* Delay.swift */; };
+		B6A7CD62264C5F9000FDAB8B /* SearchBarControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A7CD61264C5F9000FDAB8B /* SearchBarControl.swift */; };
 		B6B4C07326406C0900287DE7 /* FriendPhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B4C07226406C0900287DE7 /* FriendPhotosCollectionViewController.swift */; };
 		B6B4C07726406E4100287DE7 /* LoginFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D8047426406A640086BACE /* LoginFormViewController.swift */; };
 		B6B62EA7264875710053158C /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B62EA6264875710053158C /* News.swift */; };
@@ -59,6 +61,8 @@
 		B6534BFD26413269001D77D0 /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		B6534C012641A4C8001D77D0 /* SelectLetterControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLetterControl.swift; sourceTree = "<group>"; };
 		B654B90626407C9200A273BC /* LikePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePhoto.swift; sourceTree = "<group>"; };
+		B6A7CD5F264C45F100FDAB8B /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
+		B6A7CD61264C5F9000FDAB8B /* SearchBarControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarControl.swift; sourceTree = "<group>"; };
 		B6B4C07226406C0900287DE7 /* FriendPhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotosCollectionViewController.swift; sourceTree = "<group>"; };
 		B6B62EA6264875710053158C /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		B6B62EA82648764C0053158C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -109,6 +113,14 @@
 			path = Test;
 			sourceTree = "<group>";
 		};
+		B6A7CD5E264C45DA00FDAB8B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B6A7CD5F264C45F100FDAB8B /* Delay.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		B6C8AFE32632D99C0040654B = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +140,7 @@
 		B6C8AFEE2632D99C0040654B /* VK_GB */ = {
 			isa = PBXGroup;
 			children = (
+				B6A7CD5E264C45DA00FDAB8B /* Utils */,
 				B6E21647264727340074F050 /* Delegate */,
 				B6DBF3E82643DAA100BEF4B9 /* Extension */,
 				B6D8047226406A360086BACE /* UI */,
@@ -209,6 +222,7 @@
 				B6D9C519264986CD00676EC8 /* CommentControl.swift */,
 				B6D9C51B2649928000676EC8 /* ShareControl.swift */,
 				B6D9C51D26499A2E00676EC8 /* EyeControl.swift */,
+				B6A7CD61264C5F9000FDAB8B /* SearchBarControl.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -350,6 +364,7 @@
 				B6D8047826406AA80086BACE /* FriendPhotoCollectionViewCell.swift in Sources */,
 				B6467F92264BD6CC00F2C531 /* TestViewController.swift in Sources */,
 				B61E53C82639442700D215D3 /* UserGroupTableViewCell.swift in Sources */,
+				B6A7CD60264C45F100FDAB8B /* Delay.swift in Sources */,
 				B6D9C51A264986CD00676EC8 /* CommentControl.swift in Sources */,
 				B6E1122E2645528200558894 /* ParallaxView.swift in Sources */,
 				B6E4336526486EB4005BBA3E /* NewsTableViewCell.swift in Sources */,
@@ -362,6 +377,7 @@
 				B6B62EA92648764C0053158C /* Comment.swift in Sources */,
 				B6467F8F264BCC5500F2C531 /* LoadIndicatorView.swift in Sources */,
 				B62DE8B1263B199200EFA31F /* FriendsTableViewController.swift in Sources */,
+				B6A7CD62264C5F9000FDAB8B /* SearchBarControl.swift in Sources */,
 				B62DE8B7263B1CE800EFA31F /* User.swift in Sources */,
 				B6D9C51E26499A2E00676EC8 /* EyeControl.swift in Sources */,
 				B6DE7DB52639D070000A2554 /* SubjectMatter.swift in Sources */,

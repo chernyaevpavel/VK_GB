@@ -16,6 +16,7 @@ class LoginFormViewController: UIViewController {
         let loadingIndicatorView = LoadIndicatorView()
         return loadingIndicatorView
     }()
+    private var isTransition = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -63,16 +64,22 @@ class LoginFormViewController: UIViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if  !checkUserData() {
-            alertLoginError()
+            self.alertErrorOK("Введены не верные данные пользователя")
             return false
         }
-        self.view.addSubview(loadingIndicatorView)
-        loadingIndicatorView.startAnimation()
-        delay(bySeconds: 5, dispatchLevel: .main) {
-            self.loadingIndicatorView.stopAnimation()
-            self.loadingIndicatorView.removeFromSuperview()
+        //наклохозил, но как по-другому показать анимацию я не знаю(
+        if !isTransition {
+            self.view.addSubview(loadingIndicatorView)
+            loadingIndicatorView.countDot = 5
+            loadingIndicatorView.startAnimation()
+            delay(bySeconds: 3, dispatchLevel: .main, closure: {
+                self.loadingIndicatorView.stopAnimation()
+                self.loadingIndicatorView.removeFromSuperview()
+                self.isTransition.toggle()
+                self.alertErrorOK("Попробуйте еще раз")
+            })
         }
-        return false
+        return isTransition
     }
     
     func checkUserData() -> Bool {
@@ -85,29 +92,10 @@ class LoginFormViewController: UIViewController {
         }
     }
     
-    func alertLoginError() {
-        let alert = UIAlertController(title: "Ошибка", message: "Введены не верные данные пользователя", preferredStyle: .alert)
+    func alertErrorOK(_ text: String) {
+        let alert = UIAlertController(title: "Ошибка", message: text, preferredStyle: .alert)
         let action = UIAlertAction(title: "ОК", style: .cancel, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
-    }
-    
-    
-    public func delay(bySeconds seconds: Double, dispatchLevel: DispatchLevel = .main, closure: @escaping () -> Void) {
-        let dispatchTime = DispatchTime.now() + seconds
-        dispatchLevel.dispatchQueue.asyncAfter(deadline: dispatchTime, execute: closure)
-    }
-
-    public enum DispatchLevel {
-        case main, userInteractive, userInitiated, utility, background
-        var dispatchQueue: DispatchQueue {
-            switch self {
-            case .main:                 return DispatchQueue.main
-            case .userInteractive:      return DispatchQueue.global(qos: .userInteractive)
-            case .userInitiated:        return DispatchQueue.global(qos: .userInitiated)
-            case .utility:              return DispatchQueue.global(qos: .utility)
-            case .background:           return DispatchQueue.global(qos: .background)
-            }
-        }
     }
 }

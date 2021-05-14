@@ -9,8 +9,8 @@ import UIKit
 
 class LoadIndicatorView: UIView {
     var dotBackgroundColor =  UIColor.systemBlue
-    let hw = 20
-    let countDot = 3
+    var hw = 20
+    var countDot = 3
     var koeffDuration: Double {
         return 0.45 / Double(countDot)
     }
