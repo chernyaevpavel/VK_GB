@@ -17,6 +17,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "FriendPhotoAnimationViewController.loadImage():FriendPhotoAnimationViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "friendPhotos.count">
+            </PersistentString>
+            <PersistentString
+               value = "currentIndexPhoto">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "SearchBarControl.setupView():SearchBarControl.swift">
          <PersistentStrings>
             <PersistentString
@@ -26,6 +37,9 @@
                value = "viewSearch.layer.frame.size.height">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FriendPhotoAnimationViewController.viewDidLoad():FriendPhotoAnimationViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
