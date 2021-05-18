@@ -41,7 +41,7 @@ class FriendPhotoAnimationViewController: UIViewController {
             rightSwipe.addCompletion {_ in
                 self.complitionAnimation()
             }
-            
+
             let animation = CABasicAnimation(keyPath: "transform.scale")
             animation.fromValue = 1
             animation.toValue = 0.9
@@ -52,16 +52,10 @@ class FriendPhotoAnimationViewController: UIViewController {
         case .changed:
             let translationX = recognizer.translation(in: self.view).x
             if translationX < 0 {
-                if currentIndexPhoto == (friendPhotos.count - 1) {
-//                    firstImageView.layer.removeAnimation(forKey: "transforScaleFirstImageView")
-                    return
-                }
+                if currentIndexPhoto == (friendPhotos.count - 1) { return }
                 leftSwipe.fractionComplete = abs(translationX) / width
             } else {
-                if currentIndexPhoto == 0 {
-//                    firstImageView.layer.removeAnimation(forKey: "transforScaleFirstImageView")
-                    return
-                }
+                if currentIndexPhoto == 0 { return }
                 rightSwipe.fractionComplete = abs(translationX) / width
             }
         case .ended:
@@ -81,6 +75,8 @@ class FriendPhotoAnimationViewController: UIViewController {
                 return
             }
             firstImageView.layer.removeAnimation(forKey: "transforScaleFirstImageView")
+            leftImageView.isHidden = true
+            rightImageView.isHidden = true
         default:
             return
         }
