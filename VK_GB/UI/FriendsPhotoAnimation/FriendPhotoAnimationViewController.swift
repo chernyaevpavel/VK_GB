@@ -13,18 +13,14 @@ class FriendPhotoAnimationViewController: UIViewController {
     @IBOutlet weak private var firstImageView: UIImageView!
     @IBOutlet weak var leftImageView: UIImageView!
     @IBOutlet weak var rightImageView: UIImageView!
-    
-    
     private var leftSwipe: UIViewPropertyAnimator!
     private var rightSwipe: UIViewPropertyAnimator!
     
-    
     @objc func onPan(_ recognizer: UIPanGestureRecognizer){
         let width: CGFloat = self.view.frame.width
-
         switch recognizer.state {
         case .began:
-            prepareImage()
+            prepareImageView()
             leftSwipe = UIViewPropertyAnimator(duration: 0.7,
                                                curve: .easeInOut,
                                                animations: {
@@ -33,7 +29,6 @@ class FriendPhotoAnimationViewController: UIViewController {
                                                 self.rightImageView.frame.origin.x -= width
                                                })
             leftSwipe.addCompletion {_ in
-                self.firstImageView.layer.removeAnimation(forKey: "transforScaleFirstImageView")
                 self.complitionAnimation()
             }
             rightSwipe = UIViewPropertyAnimator(duration: 0.7,
@@ -44,7 +39,6 @@ class FriendPhotoAnimationViewController: UIViewController {
                                                     self.rightImageView.frame.origin.x += width
                                                 })
             rightSwipe.addCompletion {_ in
-                self.firstImageView.layer.removeAnimation(forKey: "transforScaleFirstImageView")
                 self.complitionAnimation()
             }
             
@@ -55,19 +49,17 @@ class FriendPhotoAnimationViewController: UIViewController {
             animation.fillMode = .forwards
             animation.isRemovedOnCompletion = false
             firstImageView.layer.add(animation, forKey: "transforScaleFirstImageView")
-
         case .changed:
             let translationX = recognizer.translation(in: self.view).x
             if translationX < 0 {
                 if currentIndexPhoto == (friendPhotos.count - 1) {
-                    firstImageView.layer.removeAnimation(forKey: "transforScaleFirstImageView")
+//                    firstImageView.layer.removeAnimation(forKey: "transforScaleFirstImageView")
                     return
                 }
                 leftSwipe.fractionComplete = abs(translationX) / width
-
             } else {
                 if currentIndexPhoto == 0 {
-                    firstImageView.layer.removeAnimation(forKey: "transforScaleFirstImageView")
+//                    firstImageView.layer.removeAnimation(forKey: "transforScaleFirstImageView")
                     return
                 }
                 rightSwipe.fractionComplete = abs(translationX) / width
@@ -78,17 +70,17 @@ class FriendPhotoAnimationViewController: UIViewController {
                 rightSwipe.continueAnimation(withTimingParameters: nil, durationFactor: 0)
                 return
             }
-            
             if leftSwipe.state.rawValue != 0 {
                 leftSwipe.continueAnimation(withTimingParameters: nil, durationFactor: 0)
                 currentIndexPhoto += 1
+                return
             }
-            
             if rightSwipe.state.rawValue != 0 {
                 rightSwipe.continueAnimation(withTimingParameters: nil, durationFactor: 0)
                 currentIndexPhoto -= 1
+                return
             }
-            
+            firstImageView.layer.removeAnimation(forKey: "transforScaleFirstImageView")
         default:
             return
         }
@@ -110,6 +102,7 @@ class FriendPhotoAnimationViewController: UIViewController {
     
     private func complitionAnimation() {
         let width: CGFloat = self.view.frame.width
+        firstImageView.layer.removeAnimation(forKey: "transforScaleFirstImageView")
         firstImageView.image = UIImage(named: friendPhotos[currentIndexPhoto].photo.name)
         firstImageView.layer.frame.origin.x = 0
         leftImageView.layer.frame.origin.x = -width
@@ -117,7 +110,7 @@ class FriendPhotoAnimationViewController: UIViewController {
         leftImageView.isHidden = true
         rightImageView.isHidden = true
     }
-    private func prepareImage() {
+    private func prepareImageView() {
         firstImageView.image = UIImage(named: friendPhotos[currentIndexPhoto].photo.name)
         if currentIndexPhoto > 0 {
             leftImageView.image = UIImage(named: friendPhotos[currentIndexPhoto - 1].photo.name)

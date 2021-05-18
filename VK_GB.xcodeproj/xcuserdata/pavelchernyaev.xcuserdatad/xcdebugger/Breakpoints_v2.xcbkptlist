@@ -190,9 +190,9 @@
             filePath = "VK_GB/UI/FriendsPhotoAnimation/FriendPhotoAnimationViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "prepareImage()"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "prepareImageView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
