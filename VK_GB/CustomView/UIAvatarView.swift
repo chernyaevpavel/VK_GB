@@ -31,5 +31,26 @@ import UIKit
         avatarImage.frame = CGRect(x: 0, y: 0, width: width, height: hight)
         avatarImage.layer.cornerRadius = hight / 2
         avatarImage.layer.masksToBounds = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(clickAvatar))
+        addGestureRecognizer(tap)
+    }
+    
+    @objc func clickAvatar() {
+        let val = 0.8
+        var animation = CASpringAnimation(keyPath: "transform.scale")
+        animation.fromValue = 1
+        animation.toValue = val
+        animation.duration = 0.5
+        animation.fillMode = CAMediaTimingFillMode.backwards
+        self.layer.add(animation, forKey: nil)
+        animation = CASpringAnimation(keyPath: "transform.scale")
+        animation.fromValue = val
+        animation.toValue = 1
+        animation.stiffness = 200
+        animation.mass = 3
+        animation.duration = 2
+        animation.beginTime = CACurrentMediaTime() + 0.5
+        animation.fillMode = CAMediaTimingFillMode.forwards
+        self.layer.add(animation, forKey: nil)
     }
 }

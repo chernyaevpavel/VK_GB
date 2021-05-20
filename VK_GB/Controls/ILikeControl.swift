@@ -53,6 +53,7 @@ class ILikeControl: UIControl {
         addSubview(counterLikeView)
         buttonHeart.frame = CGRect(x: 55, y: 0, width: 20, height: 20)
         buttonHeart.setImage(imageHeart, for: .normal)
+//        buttonHeart.setImage(imageHeart, for: .selected)
         buttonHeart.addTarget(self, action: #selector(changeLike), for: .touchUpInside)
         addSubview(buttonHeart)
     }
@@ -69,11 +70,19 @@ class ILikeControl: UIControl {
             buttonHeart.setImage(imageHeart, for: .normal)
             buttonHeart.tintColor = .none
         }
+        
     }
     
     @objc func changeLike() {
         isLike.toggle()
         delegate?.changeStatusLike(status: isLike)
+        animateCuontLikeView()
         drawControl()
+    }
+    
+    func animateCuontLikeView() {
+        var transitionFlip: UIView.AnimationOptions
+        transitionFlip = self.isLike ? .transitionFlipFromTop : .transitionFlipFromBottom
+        UIView.transition(with: counterLikeView, duration: 1, options: transitionFlip, animations: nil, completion: nil)
     }
 }

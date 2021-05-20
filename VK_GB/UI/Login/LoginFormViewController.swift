@@ -12,6 +12,11 @@ class LoginFormViewController: UIViewController {
     @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var loginTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
+    private let loadingIndicatorView: LoadIndicatorView = {
+        let loadingIndicatorView = LoadIndicatorView()
+        return loadingIndicatorView
+    }()
+    private var isTransition = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,10 +64,22 @@ class LoginFormViewController: UIViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if  !checkUserData() {
-            alertLoginError()
+            self.alertErrorOK("Введены не верные данные пользователя")
             return false
         }
-        return true
+        //наклохозил, но как по-другому показать анимацию я не знаю(
+        if !isTransition {
+            self.view.addSubview(loadingIndicatorView)
+            loadingIndicatorView.countDot = 5
+            loadingIndicatorView.startAnimation()
+            delay(bySeconds: 3, dispatchLevel: .main, closure: {
+                self.loadingIndicatorView.stopAnimation()
+                self.loadingIndicatorView.removeFromSuperview()
+                self.isTransition.toggle()
+                self.alertErrorOK("Попробуйте еще раз")
+            })
+        }
+        return isTransition
     }
     
     func checkUserData() -> Bool {
@@ -75,8 +92,8 @@ class LoginFormViewController: UIViewController {
         }
     }
     
-    func alertLoginError() {
-        let alert = UIAlertController(title: "Ошибка", message: "Введены не верные данные пользователя", preferredStyle: .alert)
+    func alertErrorOK(_ text: String) {
+        let alert = UIAlertController(title: "Ошибка", message: text, preferredStyle: .alert)
         let action = UIAlertAction(title: "ОК", style: .cancel, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)

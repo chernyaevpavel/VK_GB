@@ -17,16 +17,6 @@ class EyeControl: UIControl {
     }
     static let eyeImage = UIImage(systemName: "eye")
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-//        setupView()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-//        setupView()
-    }
-    
     func setupView() {
         backgroundColor = .none
         eyeImageView.image = EyeControl.eyeImage
