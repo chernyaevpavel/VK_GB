@@ -30,6 +30,9 @@
 		B6C8AFF92632D99D0040654B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C8AFF82632D99D0040654B /* Assets.xcassets */; };
 		B6C8AFFC2632D99D0040654B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6C8AFFA2632D99D0040654B /* LaunchScreen.storyboard */; };
 		B6C8B0072632DF600040654B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6C8B0062632DF600040654B /* Main.storyboard */; };
+		B6CA5C08265559AD00055229 /* NavigationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CA5C07265559AD00055229 /* NavigationAnimator.swift */; };
+		B6CA5C0A26555B2500055229 /* AnimatedNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CA5C0926555B2500055229 /* AnimatedNavigationController.swift */; };
+		B6CA5C0C2655916D00055229 /* AnhorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CA5C0B2655916D00055229 /* AnhorPoint.swift */; };
 		B6D1E70F263D5AF20061F336 /* UIAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1E70E263D5AF20061F336 /* UIAvatarView.swift */; };
 		B6D1E716263D75820061F336 /* ILikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1E715263D75820061F336 /* ILikeControl.swift */; };
 		B6D1E71926400EAC0061F336 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1E71826400EAC0061F336 /* Photo.swift */; };
@@ -75,6 +78,9 @@
 		B6C8AFFB2632D99D0040654B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6C8AFFD2632D99D0040654B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6C8B0062632DF600040654B /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B6CA5C07265559AD00055229 /* NavigationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAnimator.swift; sourceTree = "<group>"; };
+		B6CA5C0926555B2500055229 /* AnimatedNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedNavigationController.swift; sourceTree = "<group>"; };
+		B6CA5C0B2655916D00055229 /* AnhorPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnhorPoint.swift; sourceTree = "<group>"; };
 		B6D1E70E263D5AF20061F336 /* UIAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAvatarView.swift; sourceTree = "<group>"; };
 		B6D1E715263D75820061F336 /* ILikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ILikeControl.swift; sourceTree = "<group>"; };
 		B6D1E71826400EAC0061F336 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -127,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				B6A7CD5F264C45F100FDAB8B /* Delay.swift */,
+				B6CA5C0B2655916D00055229 /* AnhorPoint.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -150,6 +157,7 @@
 		B6C8AFEE2632D99C0040654B /* VK_GB */ = {
 			isa = PBXGroup;
 			children = (
+				B6CA5C062655598500055229 /* TransitionAnimation */,
 				B6A7CD5E264C45DA00FDAB8B /* Utils */,
 				B6E21647264727340074F050 /* Delegate */,
 				B6DBF3E82643DAA100BEF4B9 /* Extension */,
@@ -163,6 +171,15 @@
 				B6C8B0062632DF600040654B /* Main.storyboard */,
 			);
 			path = VK_GB;
+			sourceTree = "<group>";
+		};
+		B6CA5C062655598500055229 /* TransitionAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				B6CA5C07265559AD00055229 /* NavigationAnimator.swift */,
+				B6CA5C0926555B2500055229 /* AnimatedNavigationController.swift */,
+			);
+			path = TransitionAnimation;
 			sourceTree = "<group>";
 		};
 		B6D8047226406A360086BACE /* UI */ = {
@@ -372,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B61E53C526393FBD00D215D3 /* UserGroupsTableViewController.swift in Sources */,
+				B6CA5C0A26555B2500055229 /* AnimatedNavigationController.swift in Sources */,
 				B6D8047826406AA80086BACE /* FriendPhotoCollectionViewCell.swift in Sources */,
 				B6467F92264BD6CC00F2C531 /* TestViewController.swift in Sources */,
 				B61E53C82639442700D215D3 /* UserGroupTableViewCell.swift in Sources */,
@@ -379,6 +397,7 @@
 				B6D9C51A264986CD00676EC8 /* CommentControl.swift in Sources */,
 				B6948258264F0C0300BA3AE7 /* FriendPhotoAnimationViewController.swift in Sources */,
 				B6E1122E2645528200558894 /* ParallaxView.swift in Sources */,
+				B6CA5C08265559AD00055229 /* NavigationAnimator.swift in Sources */,
 				B6E4336526486EB4005BBA3E /* NewsTableViewCell.swift in Sources */,
 				B6DE7DBB2639E7F5000A2554 /* GlobalGroupsTableViewController.swift in Sources */,
 				B6D1E70F263D5AF20061F336 /* UIAvatarView.swift in Sources */,
@@ -398,6 +417,7 @@
 				B6B62EA7264875710053158C /* News.swift in Sources */,
 				B6E1122C26454E6100558894 /* FriendPhotosFullViewController.swift in Sources */,
 				B6D1E71926400EAC0061F336 /* Photo.swift in Sources */,
+				B6CA5C0C2655916D00055229 /* AnhorPoint.swift in Sources */,
 				B6B4C07726406E4100287DE7 /* LoginFormViewController.swift in Sources */,
 				B654B90726407C9200A273BC /* LikePhoto.swift in Sources */,
 				B62DE8BC263B1DA500EFA31F /* Status.swift in Sources */,

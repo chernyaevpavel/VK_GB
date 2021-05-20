@@ -85,7 +85,7 @@ class FriendPhotoAnimationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         firstImageView.isUserInteractionEnabled = true
-        let backgroundColorImageView = UIColor.black
+        let backgroundColorImageView = UIColor.white
         firstImageView.backgroundColor = backgroundColorImageView
         leftImageView.backgroundColor = backgroundColorImageView
         rightImageView.backgroundColor = backgroundColorImageView
