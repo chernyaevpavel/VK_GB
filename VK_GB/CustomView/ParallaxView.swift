@@ -18,8 +18,6 @@ class ParallaxView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        layer.borderWidth = 1
-//        layer.backgroundColor = UIColor.black.cgColor
         self.addSubview(imageView)
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor),
@@ -27,7 +25,6 @@ class ParallaxView: UIView {
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
-//        imageView.contentMode = .scaleAspectFit
     }
     
     required init?(coder: NSCoder) {

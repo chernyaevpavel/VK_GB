@@ -139,6 +139,7 @@
                     <connections>
                         <segue destination="5ul-YL-l8J" kind="relationship" relationship="viewControllers" id="EQx-lv-BA5"/>
                         <segue destination="ueD-mT-nfb" kind="relationship" relationship="viewControllers" id="dly-44-hgy"/>
+                        <segue destination="Fhf-pN-ZZ3" kind="relationship" relationship="viewControllers" id="xk4-3W-28N"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wU8-aO-uWk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -153,9 +154,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="gqf-J2-E0k">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupCell" id="XZo-PM-CWj" customClass="UserGroupTableViewCell" customModule="VK_GB" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="60.5"/>
+                                <rect key="frame" x="0.0" y="75.5" width="414" height="60.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XZo-PM-CWj" id="axV-7e-Dog">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="60.5"/>
@@ -212,6 +222,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="gqf-J2-E0k" id="URW-8E-vkg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APY-Dz-hke" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -285,7 +298,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dLB-Mo-TNg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="FDt-aG-Vze" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2175.36231884058" y="-192.1875"/>
+            <point key="canvasLocation" x="2204" y="-192"/>
         </scene>
         <!--Фото друга-->
         <scene sceneID="Hay-75-D4v">
@@ -418,7 +431,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="hR3-yX-Baq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hR3-yX-Baq">
                                 <rect key="frame" x="0.0" y="88" width="390" height="725"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -518,6 +531,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VYD-k7-ng9">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="zbx-9R-K4N" kind="relationship" relationship="rootViewController" id="H8v-cy-0Z8"/>
                     </connections>
@@ -526,9 +542,65 @@
             </objects>
             <point key="canvasLocation" x="688" y="-192"/>
         </scene>
+        <!--Новости-->
+        <scene sceneID="XVR-I1-bzI">
+            <objects>
+                <viewController id="5vS-hH-ERB" customClass="NewsTableViewController" customModule="VK_GB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fo9-eS-ZYC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sj7-FD-5No">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5vS-hH-ERB" id="qLx-DV-u43"/>
+                                    <outlet property="delegate" destination="5vS-hH-ERB" id="xQZ-x6-p5K"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XwA-tN-Vcg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XwA-tN-Vcg" firstAttribute="trailing" secondItem="Sj7-FD-5No" secondAttribute="trailing" id="Ee7-9c-0b8"/>
+                            <constraint firstItem="Sj7-FD-5No" firstAttribute="leading" secondItem="XwA-tN-Vcg" secondAttribute="leading" id="MXg-n4-Ekh"/>
+                            <constraint firstItem="XwA-tN-Vcg" firstAttribute="bottom" secondItem="Sj7-FD-5No" secondAttribute="bottom" id="PKn-ml-660"/>
+                            <constraint firstItem="Sj7-FD-5No" firstAttribute="top" secondItem="XwA-tN-Vcg" secondAttribute="top" id="i6e-by-hLy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Новости" id="mVc-Xx-mqq"/>
+                    <connections>
+                        <outlet property="tableView" destination="Sj7-FD-5No" id="EsJ-af-Rai"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vxd-Xn-njl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="844.92753623188412" y="535.71428571428567"/>
+        </scene>
+        <!--Новости-->
+        <scene sceneID="0NA-vd-lh3">
+            <objects>
+                <navigationController title="Новости" automaticallyAdjustsScrollViewInsets="NO" id="Fhf-pN-ZZ3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Новости" image="newspaper" catalog="system" selectedImage="newspaper.fill" id="hw9-Ri-AvY"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="aug-Nk-yvF">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5vS-hH-ERB" kind="relationship" relationship="rootViewController" id="CLI-Ff-63e"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D3r-J2-wjP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-65.217391304347828" y="535.71428571428567"/>
+        </scene>
     </scenes>
     <resources>
         <image name="VK_Blue_Logo-60x60" width="60" height="60"/>
+        <image name="newspaper" catalog="system" width="128" height="108"/>
+        <image name="newspaper.fill" catalog="system" width="128" height="111"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="person.3" catalog="system" width="128" height="62"/>

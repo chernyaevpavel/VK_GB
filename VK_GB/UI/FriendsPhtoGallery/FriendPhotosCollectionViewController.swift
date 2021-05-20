@@ -7,11 +7,8 @@
 
 import UIKit
 
-protocol FriendsPhotoCollectionProtocol: AnyObject {
-    func changeStatus(status: Bool, likePhoto: LikePhoto?)
-}
-
-class FriendPhotosCollectionViewController: UICollectionViewController, FriendsPhotoCollectionProtocol  {
+class FriendPhotosCollectionViewController: UICollectionViewController, ChangeStatusLikeObjectProtocol  {
+    
     var friendPhotos: [LikePhoto] = []
     
     override func viewDidLoad() {
@@ -35,15 +32,15 @@ class FriendPhotosCollectionViewController: UICollectionViewController, FriendsP
         return cell
     }
     
-    func changeStatus(status: Bool, likePhoto: LikePhoto?) {
-        let item = friendPhotos.first(where: {$0.photo.name == likePhoto?.photo.name})
+    func changeStatus<T>(status: Bool, obj: T) {
+        guard let likePhoto = obj as? LikePhoto else { return }
+        let item = friendPhotos.first(where: {$0.photo.name == likePhoto.photo.name})
         item?.like.isLike = status
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "ShowFullPhoto" else { return }
         guard let destination = segue.destination as? FriendPhotosFullViewController else { return }
-//        let selIndex = collectionView.indexPathsForSelectedItems
         destination.friendPhotos = friendPhotos
     }
 }

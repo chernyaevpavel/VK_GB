@@ -5,7 +5,7 @@
 //  Created by Павел Черняев on 29.04.2021.
 //
 
-struct Friend {
+struct User {
     var name: String
     var avatar: String?
     var status: Status
