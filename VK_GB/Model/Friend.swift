@@ -9,5 +9,5 @@ struct Friend {
     var name: String
     var avatar: String?
     var status: Status
-    var photos: [String]
+    var photos: [LikePhoto]
 }

@@ -11,7 +11,6 @@ class UserGroupsTableViewController: UITableViewController {
     var userGroups: [Group] = []
     var fillFakeData = FillFakeData()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         fillFakeData.fillUserGroup(arr: &userGroups)
@@ -25,15 +24,9 @@ class UserGroupsTableViewController: UITableViewController {
         return userGroups.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UserGroupTableViewCell.reuseID, for: indexPath) as! UserGroupTableViewCell
         let index = indexPath.row
-//        cell.groupName.text = userGroups[index].name
-//        cell.groupDescription.text = userGroups[index].subjectMater.rawValue + ", " + String(userGroups[index].countUser) + " участников"
-//        //cell.groupImage = UIImage(named: userGroups[index].image)
-//        let image = UIImage(named: userGroups[index].image)
-//        cell.groupImage.image = image
         let name = userGroups[index].name
         let description = userGroups[index].description
         var image: UIImage?
@@ -60,21 +53,11 @@ class UserGroupsTableViewController: UITableViewController {
         else {
             return
         }
-        
         var group = sourceController.globalUserGroups[index.row]
         if !userGroups.contains(where: {$0.name == group.name}) {
             group.addUser()
             userGroups.append(group)
             tableView.reloadData()
         }
-        //если расскоментировать блок ниже, то в консоль падает ошибка... попробую разобраться, но позже
-//        2021-04-29 20:37:33.452622+0400 VK_GB[29996:2311131] [Presentation] Presenting view controller <UIAlertController: 0x13001da00> from detached view controller <VK_GB.UserGroupsTableViewController: 0x12b62a6c0> is discouraged.
-//        } else {
-//            let alert = UIAlertController(title: "Ошибка", message: "Группа \(group.name), уже добавлена в ваши группы", preferredStyle: .alert)
-//            let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//            alert.addAction(action)
-//            present(alert, animated: true, completion: nil)
-//        }
     }
-
 }
