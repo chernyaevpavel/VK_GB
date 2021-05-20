@@ -15,8 +15,8 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     var arrFriens: [Friend] = []
     var arrFirstLetter =  [String]()
     let fillFakeData = FillFakeData()
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var letterControl: SelectLetterControl!
+    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet weak private var letterControl: SelectLetterControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()

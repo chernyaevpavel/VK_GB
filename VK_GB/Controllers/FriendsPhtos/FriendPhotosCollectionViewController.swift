@@ -39,4 +39,11 @@ class FriendPhotosCollectionViewController: UICollectionViewController, FriendsP
         let item = friendPhotos.first(where: {$0.photo.name == likePhoto?.photo.name})
         item?.like.isLike = status
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "ShowFullPhoto" else { return }
+        guard let destination = segue.destination as? FriendPhotosFullViewController else { return }
+//        let selIndex = collectionView.indexPathsForSelectedItems
+        destination.friendPhotos = friendPhotos
+    }
 }
