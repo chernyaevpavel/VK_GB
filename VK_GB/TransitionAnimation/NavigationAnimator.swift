@@ -52,7 +52,7 @@ class NavigationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             source.view.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
             source.view.alpha = 0
         } completion: { result in
-            transitionContext.completeTransition(result)
+            transitionContext.completeTransition(result && !transitionContext.transitionWasCancelled)
         }
     }
     
@@ -73,7 +73,7 @@ class NavigationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             destination.view.transform = CGAffineTransform(scaleX: 1, y: 1)
             destination.view.alpha = 1
         } completion: { result in
-            transitionContext.completeTransition(result)
+            transitionContext.completeTransition(result && !transitionContext.transitionWasCancelled)
         }
     }
     
@@ -93,7 +93,8 @@ class NavigationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                        options: []) {
             destination.view.transform = CGAffineTransform(rotationAngle: 0)
         } completion: { result in
-            transitionContext.completeTransition(result)
+            
+            transitionContext.completeTransition(result && !transitionContext.transitionWasCancelled)
             
         }
     }
@@ -115,7 +116,10 @@ class NavigationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             source.view.transform = CGAffineTransform(rotationAngle: -CGFloat(Double.pi) / 2)
             source.view.alpha = 0
         } completion: { result in
-            transitionContext.completeTransition(result)
+//            if result && !transitionContext.transitionWasCancelled {
+//                source.removeFromParent()
+//            }
+            transitionContext.completeTransition(result && !transitionContext.transitionWasCancelled)
         }
     }
 }

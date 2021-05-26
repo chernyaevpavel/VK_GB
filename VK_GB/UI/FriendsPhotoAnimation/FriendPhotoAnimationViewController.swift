@@ -15,11 +15,15 @@ class FriendPhotoAnimationViewController: UIViewController {
     @IBOutlet weak var rightImageView: UIImageView!
     private var leftSwipe: UIViewPropertyAnimator!
     private var rightSwipe: UIViewPropertyAnimator!
+    weak var closeInteractiveTransitionDelegate: CloseInteractiveTransition?
+    private var isDownSwipe = false
+    private var isBeganGesture = false
     
     @objc func onPan(_ recognizer: UIPanGestureRecognizer){
         let width: CGFloat = self.view.frame.width
         switch recognizer.state {
         case .began:
+            isBeganGesture = true
             prepareImageView()
             leftSwipe = UIViewPropertyAnimator(duration: 0.7,
                                                curve: .easeInOut,
@@ -41,7 +45,7 @@ class FriendPhotoAnimationViewController: UIViewController {
             rightSwipe.addCompletion {_ in
                 self.complitionAnimation()
             }
-
+            
             let animation = CABasicAnimation(keyPath: "transform.scale")
             animation.fromValue = 1
             animation.toValue = 0.9
@@ -50,33 +54,67 @@ class FriendPhotoAnimationViewController: UIViewController {
             animation.isRemovedOnCompletion = false
             firstImageView.layer.add(animation, forKey: "transforScaleFirstImageView")
         case .changed:
-            let translationX = recognizer.translation(in: self.view).x
-            if translationX < 0 {
-                if currentIndexPhoto == (friendPhotos.count - 1) { return }
-                leftSwipe.fractionComplete = abs(translationX) / width
+            let translation = recognizer.translation(in: self.view)
+            let translationY = translation.y
+            let translationX = translation.x
+            if isBeganGesture {
+                isDownSwipe = abs(translationY) > abs(translationX)
+                if isDownSwipe {
+                    closeInteractiveTransitionDelegate!.hasStarted = true
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    leftImageView.isHidden = false
+                    rightImageView.isHidden = false
+                }
+                isBeganGesture.toggle()
+            }
+            
+            if isDownSwipe {
+                let relativeTranslation = translationY / (self.view?.bounds.height ?? 1)
+                let progress = max(0, min(1, relativeTranslation))
+                closeInteractiveTransitionDelegate!.shouldFinish = progress > 0.33
+                closeInteractiveTransitionDelegate!.update(progress)
+                
             } else {
-                if currentIndexPhoto == 0 { return }
-                rightSwipe.fractionComplete = abs(translationX) / width
+                if translationX < 0 {
+                    if currentIndexPhoto == (friendPhotos.count - 1) { return }
+                    leftSwipe.fractionComplete = abs(translationX) / width
+                } else {
+                    if currentIndexPhoto == 0 { return }
+                    rightSwipe.fractionComplete = abs(translationX) / width
+                }
             }
         case .ended:
-            if leftSwipe.state.rawValue != 0 && rightSwipe.state.rawValue != 0 {
-                leftSwipe.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-                rightSwipe.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-                return
+            if isDownSwipe {
+                closeInteractiveTransitionDelegate!.hasStarted = false
+                closeInteractiveTransitionDelegate!.shouldFinish ? closeInteractiveTransitionDelegate!.finish() : closeInteractiveTransitionDelegate!.cancel()
+            } else {
+                if leftSwipe.state.rawValue != 0 && rightSwipe.state.rawValue != 0 {
+                    leftSwipe.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+                    rightSwipe.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+                    return
+                }
+                if leftSwipe.state.rawValue != 0 {
+                    leftSwipe.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+                    currentIndexPhoto += 1
+                    return
+                }
+                if rightSwipe.state.rawValue != 0 {
+                    rightSwipe.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+                    currentIndexPhoto -= 1
+                    return
+                }
+                firstImageView.layer.removeAnimation(forKey: "transforScaleFirstImageView")
+                leftImageView.isHidden = true
+                rightImageView.isHidden = true
             }
-            if leftSwipe.state.rawValue != 0 {
-                leftSwipe.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-                currentIndexPhoto += 1
-                return
+            
+        case .cancelled:
+            if isDownSwipe {
+                closeInteractiveTransitionDelegate!.hasStarted = false
+                closeInteractiveTransitionDelegate!.cancel()
             }
-            if rightSwipe.state.rawValue != 0 {
-                rightSwipe.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-                currentIndexPhoto -= 1
-                return
-            }
-            firstImageView.layer.removeAnimation(forKey: "transforScaleFirstImageView")
-            leftImageView.isHidden = true
-            rightImageView.isHidden = true
+            
         default:
             return
         }
@@ -106,6 +144,7 @@ class FriendPhotoAnimationViewController: UIViewController {
         leftImageView.isHidden = true
         rightImageView.isHidden = true
     }
+    
     private func prepareImageView() {
         firstImageView.image = UIImage(named: friendPhotos[currentIndexPhoto].photo.name)
         if currentIndexPhoto > 0 {
@@ -114,8 +153,7 @@ class FriendPhotoAnimationViewController: UIViewController {
         if (currentIndexPhoto + 1) < friendPhotos.count {
             rightImageView.image = UIImage(named: friendPhotos[currentIndexPhoto + 1].photo.name)
         }
-        leftImageView.isHidden = false
-        rightImageView.isHidden = false
+        
         
     }
 }
