@@ -20,8 +20,16 @@
          contextName = "FriendPhotoAnimationViewController.loadImage():FriendPhotoAnimationViewController.swift">
          <PersistentStrings>
             <PersistentString
+               value = "currentIndexPhoto">
+            </PersistentString>
+            <PersistentString
                value = "friendPhotos.count">
             </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FriendPhotoAnimationViewController.onPan(_:):FriendPhotoAnimationViewController.swift">
+         <PersistentStrings>
             <PersistentString
                value = "currentIndexPhoto">
             </PersistentString>

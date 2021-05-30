@@ -13,6 +13,7 @@ protocol SelectLetterProtocol: AnyObject {
 
 class FriendsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SelectLetterProtocol {
 //    var arrFriens: [Friend] = []
+    
     private var arrFirstLetter =  [String]()
     private var friendsDictionary = [String: FriendSectionHeader]()
     @IBOutlet weak private var tableView: UITableView!

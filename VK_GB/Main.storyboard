@@ -430,10 +430,10 @@
             </objects>
             <point key="canvasLocation" x="2936" y="-1692"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Animated Navigation Controller-->
         <scene sceneID="g6s-QA-GHT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="cwr-N7-ElT" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="cwr-N7-ElT" customClass="AnimatedNavigationController" customModule="VK_GB" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="tYk-yb-p7j">
                         <autoresizingMask key="autoresizingMask"/>
@@ -475,6 +475,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uzW-cC-8s6">
+                                <rect key="frame" x="94" y="231" width="240" height="462"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="A9y-9d-jHo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -486,6 +491,7 @@
                     </view>
                     <connections>
                         <outlet property="searchControl" destination="ZsD-i3-GGQ" id="CVf-sl-8lv"/>
+                        <outlet property="viewTest" destination="uzW-cC-8s6" id="gmY-pg-YjZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VBe-qO-YYE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -495,7 +501,7 @@
         <!--Друзья-->
         <scene sceneID="t7S-6C-us9">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5ul-YL-l8J" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5ul-YL-l8J" customClass="AnimatedNavigationController" customModule="VK_GB" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Друзья" image="person.2" catalog="system" selectedImage="person.2.fill" id="CVg-CL-HZH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" autoresizesSubviews="NO" contentMode="scaleAspectFit" largeTitles="YES" id="RId-3D-u3b">
@@ -666,7 +672,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxd-Xn-njl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="844.92753623188412" y="535.71428571428567"/>
+            <point key="canvasLocation" x="687" y="535"/>
         </scene>
         <!--Новости-->
         <scene sceneID="0NA-vd-lh3">
@@ -685,7 +691,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D3r-J2-wjP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-65.217391304347828" y="535.71428571428567"/>
+            <point key="canvasLocation" x="-64" y="534"/>
         </scene>
     </scenes>
     <resources>
