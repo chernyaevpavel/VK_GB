@@ -74,6 +74,7 @@ class SearchBarControl: UIControl {
     }
     
     @objc func tapControl() {
+        print(searchImageView.frame)
         startAnimation()
     }
     
@@ -86,29 +87,40 @@ class SearchBarControl: UIControl {
         if isSelected {return}
         isSelected.toggle()
         let widthCancelButton: CGFloat = 66
-        print(viewSearch.layer.frame.size.width)
-        print(self.viewSearch.layer.frame.origin.x)
+//        print(viewSearch.layer.frame.size.width)
+//        print(self.viewSearch.layer.frame.origin.x)
         let widthTextFieldView = viewSearch.layer.frame.size.width - 4 - hwImage - 4 - 4 - widthCancelButton - 4
-        print(widthTextFieldView)
+//        print(widthTextFieldView)
         
-        UIView.animate(withDuration: duration,
-                       delay: 0,
-                       options: [.curveEaseOut]) {
-            self.viewSearch.layer.borderColor = UIColor.link.cgColor
-            self.viewSearch.layer.borderWidth = 2
-            self.searchImageView.layer.frame.origin.x = 4
-            self.searchTexFieldView.layer.frame.origin.x = 4 + self.hwImage + 4
-            self.searchTexFieldView.layer.frame.size.width = widthTextFieldView
-            self.cancelButton.layer.frame.size.width += widthCancelButton
-            self.cancelButton.frame.origin.x -= widthCancelButton
-            
+        
+//        UIView.animate(withDuration: duration,
+//                       delay: 0,
+//                       options: [.curveEaseOut]) {
+//            self.viewSearch.layer.borderColor = UIColor.link.cgColor
+//            self.viewSearch.layer.borderWidth = 2
+//            self.searchImageView.layer.frame.origin.x = 4
+//            self.searchTexFieldView.layer.frame.origin.x = 4 + self.hwImage + 4
+//            self.searchTexFieldView.layer.frame.size.width = widthTextFieldView
+//            self.cancelButton.layer.frame.size.width += widthCancelButton
+//            self.cancelButton.frame.origin.x -= widthCancelButton
+//
+//        }
+//
+//
+//        NSLayoutConstraint.activate([
+//            searchImageView.leadingAnchor.constraint(equalTo: viewSearch.leadingAnchor, constant: 4),
+//            cancelButton.trailingAnchor.constraint(equalTo: viewSearch.trailingAnchor, constant: -4)
+//        ])
+//        print(cancelButton.constraints)
+        
+        print("ddd")
+        UIView.transition(with: searchImageView,
+                          duration: duration) {
+            [weak self] in
+            self?.searchImageView.frame.origin.x = 4
         }
         
+        searchImageView.frame.origin.x = 4
         
-        NSLayoutConstraint.activate([
-            searchImageView.leadingAnchor.constraint(equalTo: viewSearch.leadingAnchor, constant: 4),
-            cancelButton.trailingAnchor.constraint(equalTo: viewSearch.trailingAnchor, constant: -4)
-        ])
-        print(cancelButton.constraints)
     }
 }

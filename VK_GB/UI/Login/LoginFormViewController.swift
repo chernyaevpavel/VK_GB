@@ -16,7 +16,7 @@ class LoginFormViewController: UIViewController {
         let loadingIndicatorView = LoadIndicatorView()
         return loadingIndicatorView
     }()
-    private var isTransition = false
+    private var isTransition = true
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
