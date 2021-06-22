@@ -7,10 +7,10 @@
 
 import UIKit
 
-@IBDesignable class UIAvatarView: UIView {
+class UIAvatarView: UIView {
     var avatarImage = UIImageView()
     
-    @IBInspectable var shadowRadius: CGFloat = 2 {
+    var shadowRadius: CGFloat = 2 {
         didSet {
             setNeedsDisplay()
         }
