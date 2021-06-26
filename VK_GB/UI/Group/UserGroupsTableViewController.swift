@@ -9,10 +9,11 @@ import UIKit
 
 class UserGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     private var userGroups = [Group]()
-    private var fillFakeData = FillFakeData()
+//    private var fillFakeData = FillFakeData()
     private var foundUserGroup = [Group]()
     private var isSearch = false
     @IBOutlet weak var searchBar: UISearchBar!
+    private let apiService = APIService()
     
     func foundGrupsByText(_ text: String) -> [Group] {
         return userGroups.filter({$0.name.lowercased().contains(text.lowercased()) })
@@ -31,7 +32,11 @@ class UserGroupsTableViewController: UITableViewController, UISearchBarDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        fillFakeData.fillUserGroup(arr: &userGroups)
+//        fillFakeData.fillUserGroup(arr: &userGroups)
+        apiService.getGroups { groups in
+            self.userGroups = groups
+            self.tableView.reloadData()
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -73,7 +78,7 @@ class UserGroupsTableViewController: UITableViewController, UISearchBarDelegate 
         let index = indexPath.row
         group = sourceController.filtering ?  sourceController.searchUserGroup[index] : sourceController.globalUserGroups[index]
         if !userGroups.contains(where: {$0.name == group.name}) {
-            group.addUser()
+//            group.addUser()
             userGroups.append(group)
             isSearch = false
             tableView.reloadData()

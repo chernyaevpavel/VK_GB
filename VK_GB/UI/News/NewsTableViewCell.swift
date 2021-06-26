@@ -35,12 +35,12 @@ class NewsTableViewCell: UITableViewCell, ChangeStatusLikeProtocol {
         
         if news.images.count != 0 {
             let photo = news.images[0]
-            let nameImage = photo.name
-            if let image = UIImage(named: nameImage) {
-                newsImageView.image = image
-            } else {
-                newsImageView.image = UIImage(named: "no-image")!
-            }
+//            let nameImage = photo.name
+//            if let image = UIImage(named: nameImage) {
+//                newsImageView.image = image
+//            } else {
+//                newsImageView.image = UIImage(named: "no-image")!
+//            }
         } else {
             newsImageView.image = UIImage(named: "no-image")!
         }

@@ -8,7 +8,7 @@
 import UIKit
 
 class FriendPhotoAnimationViewController: UIViewController {
-    var friendPhotos: [LikePhoto] = []
+    var friendPhotos: [Photo] = []
     var currentIndexPhoto: Int = 0
     @IBOutlet weak private var firstImageView: UIImageView!
     @IBOutlet weak var leftImageView: UIImageView!
@@ -18,6 +18,7 @@ class FriendPhotoAnimationViewController: UIViewController {
     weak var closeInteractiveTransitionDelegate: CloseInteractiveTransition?
     private var isDownSwipe = false
     private var isBeganGesture = false
+    private let apiService = APIService()
     
     @objc func onPan(_ recognizer: UIPanGestureRecognizer){
         let width: CGFloat = self.view.frame.width
@@ -129,7 +130,13 @@ class FriendPhotoAnimationViewController: UIViewController {
         rightImageView.backgroundColor = backgroundColorImageView
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(onPan(_:)))
         firstImageView.addGestureRecognizer(panGestureRecognizer)
-        firstImageView.image = UIImage(named: friendPhotos[currentIndexPhoto].photo.name)
+        if let urlPhoto = friendPhotos[currentIndexPhoto].photo1280 {
+            let url = URL(string: urlPhoto)
+            apiService.downloadImage(from: url!) { data in
+                self.firstImageView.image = UIImage(data: data)
+            }
+        }
+        //        firstImageView.image = UIImage(named: friendPhotos[currentIndexPhoto].photo.name)
         leftImageView.isHidden = true
         rightImageView.isHidden = true
     }
@@ -137,7 +144,15 @@ class FriendPhotoAnimationViewController: UIViewController {
     private func complitionAnimation() {
         let width: CGFloat = self.view.frame.width
         firstImageView.layer.removeAnimation(forKey: "transforScaleFirstImageView")
-        firstImageView.image = UIImage(named: friendPhotos[currentIndexPhoto].photo.name)
+        
+        if let urlPhoto = friendPhotos[currentIndexPhoto].photo1280 {
+            let url = URL(string: urlPhoto)
+            apiService.downloadImage(from: url!) { data in
+                self.firstImageView.image = UIImage(data: data)
+            }
+        }
+        
+//        firstImageView.image = UIImage(named: friendPhotos[currentIndexPhoto].photo.name)
         firstImageView.layer.frame.origin.x = 0
         leftImageView.layer.frame.origin.x = -width
         rightImageView.layer.frame.origin.x = width
@@ -146,12 +161,31 @@ class FriendPhotoAnimationViewController: UIViewController {
     }
     
     private func prepareImageView() {
-        firstImageView.image = UIImage(named: friendPhotos[currentIndexPhoto].photo.name)
+        if let urlPhoto = friendPhotos[currentIndexPhoto].photo1280 {
+            let url = URL(string: urlPhoto)
+            apiService.downloadImage(from: url!) { data in
+                self.firstImageView.image = UIImage(data: data)
+            }
+        }
+//        firstImageView.image = UIImage(named: friendPhotos[currentIndexPhoto].photo.name)
         if currentIndexPhoto > 0 {
-            leftImageView.image = UIImage(named: friendPhotos[currentIndexPhoto - 1].photo.name)
+//            leftImageView.image = UIImage(named: friendPhotos[currentIndexPhoto - 1].photo.name)
+            if let urlPhoto = friendPhotos[currentIndexPhoto - 1].photo1280 {
+                let url = URL(string: urlPhoto)
+                apiService.downloadImage(from: url!) { data in
+                    self.leftImageView.image = UIImage(data: data)
+                }
+            }
+            
         }
         if (currentIndexPhoto + 1) < friendPhotos.count {
-            rightImageView.image = UIImage(named: friendPhotos[currentIndexPhoto + 1].photo.name)
+//            rightImageView.image = UIImage(named: friendPhotos[currentIndexPhoto + 1].photo.name)
+            if let urlPhoto = friendPhotos[currentIndexPhoto + 1].photo1280 {
+                let url = URL(string: urlPhoto)
+                apiService.downloadImage(from: url!) { data in
+                    self.rightImageView.image = UIImage(data: data)
+                }
+            }
         }
         
         

@@ -18,23 +18,26 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     private var friendsDictionary = [String: FriendSectionHeader]()
     @IBOutlet weak private var tableView: UITableView!
     @IBOutlet weak private var letterControl: SelectLetterControl!
+    private let apiService = APIService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(FriendHeaderSectionView.self, forHeaderFooterViewReuseIdentifier: FriendHeaderSectionView.reuseID)
         let fillFakeData = FillFakeData()
         var arrFriends = [User]()
-        fillFakeData.flllFriend(arr: &arrFriends)
-        arrFirstLetter = fillFakeData.arrFirstChar(arrFriends: arrFriends)
-        letterControl.arrLetters = arrFirstLetter
-        letterControl.delegate = self
-            
-        for letter in arrFirstLetter {
-            let key = letter
-            let value = FriendSectionHeader(letter, filterFriendByLetter(arrFriends, letter))
-            friendsDictionary[key] = value
+        apiService.getFriends { users in
+            arrFriends = users
+            self.arrFirstLetter = fillFakeData.arrFirstChar(arrFriends: arrFriends)
+            self.letterControl.arrLetters = self.arrFirstLetter
+            self.letterControl.delegate = self
+            for letter in self.arrFirstLetter {
+                let key = letter
+                let value = FriendSectionHeader(letter, self.filterFriendByLetter(arrFriends, letter))
+                self.friendsDictionary[key] = value
+            }
+            self.tableView.reloadData()
         }
         
-        tableView.register(FriendHeaderSectionView.self, forHeaderFooterViewReuseIdentifier: FriendHeaderSectionView.reuseID)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,13 +55,14 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
         let index = indexPath.row
         let letter = arrFirstLetter[section]
         guard let friend = friendsDictionary[letter]?.arrFriends[index] else { return cell}
-        var avatar: UIImage?
-        if let named = friend.avatar {
-            avatar = UIImage(named: named)
-        } else {
-            avatar = nil
-        }
-        cell.configure(name: friend.name, avatar: avatar, status: friend.status)
+        let avatar = friend.photo200_Orig
+
+        let name = "\(friend.firstName) \(friend.lastName)"
+//        var lastSeen: TimeInterval?
+//        if let lS = friend.lastSeen?.time {
+//            lastSeen = TimeInterval(lS)
+//        }
+        cell.configure(name: name , avatar: avatar, status: nil)
         return cell
     }
     
@@ -70,7 +74,7 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
         guard let friend = friendsDictionary[letter]?.arrFriends[indexPath.row] else {
             return
         }
-        friendPhotosCollectionViewController.friendPhotos = friend.photos
+        friendPhotosCollectionViewController.friendID = friend.id
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
@@ -93,6 +97,7 @@ class FriendsTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     private func filterFriendByLetter(_ arr: [User], _ letter: String) -> [User] {
-        return arr.filter({ String($0.name.first ?? "*") == letter })
+        return arr.filter({ String($0.firstName.first ?? "*") == letter })
+
     }
 }

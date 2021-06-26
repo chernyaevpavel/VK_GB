@@ -11,8 +11,9 @@ class FriendPhotoCollectionViewCell: UICollectionViewCell, ChangeStatusLikeProto
     static let reuseID = "FriendPhotoCollectionViewCell"
     @IBOutlet weak private var photo: UIImageView!
     @IBOutlet weak private var likeControl: ILikeControl!
-    private var likePhoto: LikePhoto?
+    private var likePhoto: Photo?
     weak var delegate: ChangeStatusLikeObjectProtocol?
+    private let apiService = APIService()
     
     override func prepareForReuse() {
         photo.image = nil
@@ -20,18 +21,29 @@ class FriendPhotoCollectionViewCell: UICollectionViewCell, ChangeStatusLikeProto
         likeControl.isLike = false
     }
     
-    func configure(likePhoto: LikePhoto) {
-        self.likePhoto = likePhoto
-        likeControl.countLike = likePhoto.like.countLike
-        likeControl.isLike = likePhoto.like.isLike
+    func configure(photo: Photo) {
+        self.likePhoto = photo
+        likeControl.countLike = photo.likes.count
+        likeControl.isLike = false
         likeControl.delegate = self
         likeControl.drawControl()
-        let image = UIImage(named: likePhoto.photo.name)
-        if let tmpImage = image {
-            photo.image = tmpImage
+        
+        if let urlPhoto = photo.photo807 {
+            let url = URL(string: urlPhoto)
+            apiService.downloadImage(from: url!) { data in
+                self.photo.image = UIImage(data: data)
+            }
         } else {
-            photo.image = UIImage(named: "no-image")
+            self.photo.image = UIImage(named: "no-image")
         }
+        
+        
+//        let image = UIImage(named: likePhoto.photo.name)
+//        if let tmpImage = image {
+//            photo.image = tmpImage
+//        } else {
+//            photo.image = UIImage(named: "no-image")
+//        }
     }
     
     func changeStatusLike(status: Bool) {

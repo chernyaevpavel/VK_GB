@@ -30,7 +30,7 @@ class FriendPhotosFullViewController: UIViewController {
                                 y: 0,
                                 width: scrollWidth,
                                 height: scrollHeight)
-            view.imageView.image = UIImage(named: image.photo.name)
+//            view.imageView.image = UIImage(named: image.photo.name)
             view.tag = i + 1
             view.clipsToBounds = true
             self.scrollView.addSubview(view)

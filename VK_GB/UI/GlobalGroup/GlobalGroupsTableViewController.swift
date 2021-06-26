@@ -23,7 +23,7 @@ class GlobalGroupsTableViewController: UITableViewController, UISearchResultsUpd
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fillFakeData.fillGlobalGroup(arr: &globalUserGroups)
+//        fillFakeData.fillGlobalGroup(arr: &globalUserGroups)
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false

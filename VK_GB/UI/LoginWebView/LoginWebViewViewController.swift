@@ -24,9 +24,6 @@ class LoginWebViewViewController: UIViewController, WKNavigationDelegate {
             return
         }
         
-//        print("url = \(url)")
-//        print("fragment = \(fragment)")
-        
         let params = fragment
             .components(separatedBy: "&")
             .map { $0.components(separatedBy: "=") }
@@ -37,22 +34,17 @@ class LoginWebViewViewController: UIViewController, WKNavigationDelegate {
                 dict[key] = value
                 return dict
             }
-        
-        guard let token = params["access_token"] else {
+        guard let token = params["access_token"],
+              let userId = params["user_id"] else {
             decisionHandler(.allow)
             return
         }
-        
-//        print("token = \(token)")
         Session.shared.token = token
-        decisionHandler(.cancel)
+        Session.shared.userId = userId
         
-        let vkAPI = VK_API()
-        vkAPI.getFriends()
-        vkAPI.getPhotos(ownerID: "5967415")
-        vkAPI.getGroups()
-        vkAPI.groupsSearch(textSearchRequest: "рыбалка")
+        showMainTabBar()
         
+        decisionHandler(.cancel)        
     }
     
     override func viewDidLoad() {
@@ -60,7 +52,7 @@ class LoginWebViewViewController: UIViewController, WKNavigationDelegate {
         loadLoginForm()
     }
     
-    // MARK - LoginForm
+    // MARK: - LoginForm
     private func loadLoginForm() {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
@@ -71,6 +63,7 @@ class LoginWebViewViewController: UIViewController, WKNavigationDelegate {
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "scope", value: "262150"),
+            URLQueryItem(name: "revoke", value: "1"),
             URLQueryItem(name: "response_type", value: "token"),
             URLQueryItem(name: "v", value: "5.68")
         ]
@@ -79,4 +72,9 @@ class LoginWebViewViewController: UIViewController, WKNavigationDelegate {
         
         webView.load(request)
     }
+    
+    private func showMainTabBar() {
+        performSegue(withIdentifier: "MainTabBarSegue", sender: nil)
+    }
+    
 }
